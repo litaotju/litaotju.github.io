@@ -9,6 +9,6 @@ tags: [图片]
 # 这是一个测试图片的博文
 ## 测试SSH
 
-![图片1](/asset/pic/1.jpg)
-![图片2](/asset/pic/2.jpg)
-![图片3](/asset/pic/3.jpg)
+![图片1](/assets/pic/1.jpg)
+![图片2](/assets/pic/2.jpg)
+![图片3](/assets/pic/3.jpg)
