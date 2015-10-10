@@ -8,7 +8,8 @@ tags:
 {% include JB/setup %}
 
 ## 证明问题Q的NP完整性的两个条件  
-  NP的问题都针对性的是判定性问题。  
+  NP的问题都针对性的是判定性问题。
+    
 * Q是NP问题，Nodeterministic Polynomial Decisionable
 * Q与一个一直的NPC问题一样难，关键是找到一个多项式规约函数。
 
