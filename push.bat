@@ -1,7 +1,17 @@
+echo off
+git status
+
+set /p x="是否继续进行git add? (y/n):"
+if %x%==y goto :git
+if %x%==n goto :nothing
+
+:git 
 git add --all
-pause
-set /p massage=["plz enter commit message\n>>"]
+set /p massage="plz enter commit message>>"
 git commit -m "%massage%"
+git push origin master
 pause
-git push
+
+:nothing
+echo "nothing changed"
 pause
