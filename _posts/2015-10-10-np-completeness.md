@@ -8,7 +8,7 @@ tags:
 {% include JB/setup %}
 
 ## 证明问题Q的NP完整性的两个条件  
-  NP的问题都针对性的是判定性问题。
+  NP的问题都针对性的是判定性问题。  
 * Q是NP问题，Nodeterministic Polynomial Decisionable
 * Q与一个一直的NPC问题一样难，关键是找到一个多项式规约函数。
 
@@ -26,4 +26,5 @@ SAT问题属于NP-Complete问题。SAT是第一个被证明的NP完整性问题�
 * 求解的时间要尽可能快，线性或者多项式时间。
 * 近似程度 Approximation Ratio要小。
 
-	
+## 参考网址
+[库克其人](http://blog.sciencenet.cn/blog-1225851-840719.html)

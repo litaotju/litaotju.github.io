@@ -11,6 +11,7 @@ set /p massage="plz enter commit message>>"
 git commit -m "%massage%"
 git push origin master
 pause
+exit
 
 :nothing
 echo "nothing changed"
