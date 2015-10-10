@@ -9,6 +9,6 @@ tags: [图片]
 # 这是一个测试图片的博文
 ## 测试SSH
 
-![图片1](/assets/pic/1.jpg =300)
+![图片1](/assets/pic/1.jpg ) "style="max-width:100%;"
 ![图片2](/assets/pic/2.jpg =300)
 ![图片3](/assets/pic/3.jpg)
