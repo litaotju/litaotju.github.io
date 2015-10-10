@@ -1,6 +1,7 @@
 git add --all
 pause
-git commit -m "new blog"
+set /p massage=["plz enter commit message\n>>"]
+git commit -m "%massage%"
 pause
 git push
 pause
