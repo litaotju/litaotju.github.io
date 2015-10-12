@@ -1,15 +1,14 @@
 ---
 layout: post
-title: "From Cpp to .exe"
+title: "从C++到执行文件"
 description: 
 category:  
 tags: 
 ---
 {% include JB/setup %}
 
-# 从C++到执行文件
-主要有以下几个步骤：
----
+主要有以下几个步骤：  
+
 * 预处理,  g++ 参数为 -E
 * 编译,    g++ 参数为 -S
 * 汇编,    g++ 参数为 -c, 只激活预处理，编译和汇编
@@ -23,13 +22,14 @@ tags:
 ---
 
 以一个"hello.cc"为例，文件大小为1kb.它的c++代码如下：  
-		'''
-		#include <iostream>
-		using namespace std;  
-			int main(){  
-			cout<<"Hello World"<<endl;  
-			}
-'''  
+<pre><code>
+#include "iostream"  (转换成<>)
+using namespace std;    
+	int main(){    
+	cout<<"Hello World"<<endl;   
+	}  
+</code></pre>
+
 进过编译指令'gcc -E hello.cc',输出的"hello.i"文件的大小为**411kb**,经过查看
 ，主要是 using namespace这一句占用了基本上大部分的文件大小。其主要不同是将原来在不同文件中定义的代码
 直接写进了输出的"hello.i"中。
@@ -39,7 +39,7 @@ tags:
 
 编译的主要作用是将预处理后的代码变成汇编语言。以上段所生成的".i"为例，编译的gcc命令为'g++ -S hello.i'。
 本例中生成的汇编语言代码如下：  
-'''
+<pre><code>
 	.file	"hello_post_prep.cc"
 .lcomm __ZStL8__ioinit,1,1
 	.def	___main;	.scl	2;	.type	32;	.endef
@@ -152,7 +152,6 @@ LFE963:
 	.def	__ZNSt8ios_base4InitD1Ev;	.scl	2;	.type	32;	.endef
 	.def	__ZNSt8ios_base4InitC1Ev;	.scl	2;	.type	32;	.endef
 	.def	_atexit;	.scl	2;	.type	32;	.endef
-
-'''
+</code></pre>
 
 ## Assembler(as) and Linker(ld)
