@@ -1,13 +1,14 @@
 ---
 layout: post
-title: "Python Multi-Thread Programing"
+title: "Python多线程编程"
 description: 
 category:  
 tags: 
 ---
 {% include JB/setup %}
-#Python 多线程
+## 简要介绍
 多线程类似于同时执行多个不同程序，多线程运行有如下优点：  
+
 * 使用线程可以把占据长时间的程序中的任务放到后台去处理。
 * 用户界面可以更加吸引人，这样比如用户点击了一个按钮去触发某些事件的处理，可以弹出一个进度条来显示处理的进度
 * 程序的运行速度可能加快
@@ -21,6 +22,5 @@ tags:
 
 在其他线程正在运行时，线程可以暂时搁置（也称为睡眠） -- 这就是线程的退让。  
 
->参考网址  
----
+##参考网址  
 [菜鸟教程](http://www.runoob.com/python/python-multithreading.html)
