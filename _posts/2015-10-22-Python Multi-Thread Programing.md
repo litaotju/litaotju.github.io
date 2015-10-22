@@ -22,5 +22,63 @@ tags:
 
 在其他线程正在运行时，线程可以暂时搁置（也称为睡眠） -- 这就是线程的退让。  
 
+## 与Python多线程编程有关的模块
+下面列出了与Python多线程编程有关的模块。  
+
+* thread， 基本的低级别的线程模块
+* threading, 高级别的线程和同步对象
+* Queue， 供多线程使用的同步先入先出（FIFO）队列
+* mutex， 互斥对象
+* SocketServer , 具有线程控制的TCP和UDP管理器
+
+## 一个简单的例子
+下面的例子例化了两个 Thread对象，并且将loop函数作为target参数传递给Thread的构造函数
+，同时将loop运行所需要的参数打包成一个tuple传递给args.也就是下面的语句：
+
+    t = threading.Thread(target = loop, args = (i, loops[i]))
+    
+完整的代码如下。
+
+<pre><code>
+
+    import threading
+    from time import sleep, ctime
+    
+    def loop(nloop, nsec):
+        print "Start Loop", nloop, 'at:', ctime()
+        sleep(nsec)
+        print "Loop ", nloop, 'done at:', ctime()
+            
+    class MyThread:
+        
+        def __init__(self):
+            pass
+            
+    def main():
+        loops = [4, 2]
+        print 'Start at time:', ctime
+        threads = []
+        nloops = range(len(loops))
+        
+        for i in nloops:
+            t = threading.Thread( target = loop, args = (i, loops[i]))
+            threads.append(t)
+    
+        for i in nloops:
+            threads[i].start()
+        
+        for i in nloops:
+            threads[i].join()
+        
+        print "all Done at", ctime()
+        
+    if __name__  == "__main__":
+        main()
+
+</code></pre>
+
+##可调用的类
+重载了特殊方法 __call__的类，该类的对象可以作为Thread初始化时所对应的target实参。
+
 ##参考网址  
 [菜鸟教程](http://www.runoob.com/python/python-multithreading.html)
