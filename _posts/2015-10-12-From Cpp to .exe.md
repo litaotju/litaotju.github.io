@@ -2,7 +2,7 @@
 layout: post
 title: "从C++到执行文件"
 description: 
-category:  
+category:  C++
 tags: 
 ---
 {% include JB/setup %}

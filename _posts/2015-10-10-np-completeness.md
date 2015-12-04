@@ -2,8 +2,8 @@
 layout: post
 title: "关于NP完整性问题"
 description: 
-category:  
-tags: 
+category:  算法
+tags: NP完整性
 ---
 {% include JB/setup %}
 

@@ -2,8 +2,8 @@
 layout: post
 title: "C++ Primer Note"
 description: 
-category:  
-tags: 
+category:  C++
+tags: C++　Primer
 ---
 {% include JB/setup %}
 

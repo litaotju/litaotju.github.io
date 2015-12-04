@@ -2,7 +2,7 @@
 layout: post
 title: "Python Built-In Function"
 description: 
-category:  
+category:  python
 tags: 
 ---
 {% include JB/setup %}

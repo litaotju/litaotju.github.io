@@ -2,7 +2,7 @@
 layout: post
 title: "Python多线程编程"
 description: 
-category:  
+category:  python
 tags: 
 ---
 {% include JB/setup %}

@@ -2,7 +2,7 @@
 layout: post
 title: "YAMLIP branch and bound"
 description: 
-category:  
+category:  算法
 tags: 
 ---
 {% include JB/setup %}
