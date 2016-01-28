@@ -14,8 +14,8 @@ tags:
 #现有的数字电路开源工具
 
 * [VTR](http://code.google.com/p/vtr-verilog-to-routing)
-* Yosys
-* rapidSmith
+* [Yosys](http://www.clifford.at/yosys/)
+* [rapidSmith](http://sourceforge.net/projects/rapidsmith/files/)
 
 #VTR框架
 VTR(Verilog-to-Routing)是一个用于 FPGA架构设计和新型布局布线算法研究的框架，其中包含 ODIN II, ABC, VPR三个工具。
@@ -28,7 +28,6 @@ This framework includes benchmark circuits (in Verilog), example FPGA
 architectures, and a flow that maps a set of benchmark circuits to the FPGA 
 architecture of your choosing.
 
-==============================================================================
 Contents of the archive:
 
 Tools: 
@@ -57,7 +56,6 @@ Other:
 
 	quick_test: Used by run_quick_test.pl to check build
 
-===============================================================================
 
 ODIN II 是一个Verilog前端工具， 可以解析verilog，输出blif网表。可以选择输出中间信息，比如dot格式的AST(抽象语法树)， 以及网表的 Graph。
 
@@ -67,10 +65,7 @@ VPR 是一款FPGA布局布线工具。
 
 
 #Yosys
-Yosys使用C++语言开发。
-
-yosys -- Yosys Open SYnthesis Suite
-===================================
+Yosys使用C++语言开发。Yosys Open SYnthesis Suite
 
 This is a framework for RTL synthesis tools. It currently has
 extensive Verilog-2005 support and provides a basic set of
@@ -81,25 +76,27 @@ the existing passes (algorithms) using synthesis scripts and
 adding additional passes as needed by extending the yosys C++
 code base.
 
-Yosys is free software licensed under the ISC license (a GPL
-compatible license that is similar in terms to the MIT license
-or the 2-clause BSD license).
-
-
-Web Site
-========
-
-More information and documentation can be found on the Yosys web site:
-
-	http://www.clifford.at/yosys/
-
 #rapidSmith
+Designed by Brigham Young University
 
-一款Java所写的针对Xilinx FPGA的，基于 xdl语言的 FPGA CAD工具。
+Keywords: Java, Xilinx FPGA，基于 xdl语言的 FPGA CAD工具。
 
+## Introduction 
 RapidSmith is a research-based FPGA CAD tool written in Java for modern Xilinx
 FPGAs. Based on XDL, its objective is to serve as a rapid prototyping platform
 for research ideas and algorithms relating to low level FPGA CAD tools.
 
+##How is This Different than VPR?
+VPR (Versatile Place and Route) has been an FPGA research tool for several years and has led to hundreds of 
+publications on new FPGA CAD research. It has been a significant contribution to the FPGA research 
+community and has grown to be a complete FPGA CAD flow for research-based FPGAs.
+The main difference between RapidSmith and VPR is that RapidSmith aims to provide the ability to target 
+commercial Xilinx FPGAs. All features of these FPGAs which are accessible via XDL are available in 
+RapidSmith.  Our understanding is that VPR currently is limited to FPGA features which can be described using 
+VPR's architectural description facilities.
 
+#附件
+[Yosys文档](/assets/yosys.txt)
+[VTR](/vtr.txt)
+[repaidSmith](assets/repidsmith.pdf)
 
