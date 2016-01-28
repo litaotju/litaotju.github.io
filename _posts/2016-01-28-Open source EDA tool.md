@@ -81,12 +81,12 @@ Designed by Brigham Young University
 
 Keywords: Java, Xilinx FPGA，基于 xdl语言的 FPGA CAD工具。
 
-## Introduction 
+###Introduction 
 RapidSmith is a research-based FPGA CAD tool written in Java for modern Xilinx
 FPGAs. Based on XDL, its objective is to serve as a rapid prototyping platform
 for research ideas and algorithms relating to low level FPGA CAD tools.
 
-##How is This Different than VPR?
+###How is This Different than VPR?
 VPR (Versatile Place and Route) has been an FPGA research tool for several years and has led to hundreds of 
 publications on new FPGA CAD research. It has been a significant contribution to the FPGA research 
 community and has grown to be a complete FPGA CAD flow for research-based FPGAs.
@@ -95,8 +95,18 @@ commercial Xilinx FPGAs. All features of these FPGAs which are accessible via XD
 RapidSmith.  Our understanding is that VPR currently is limited to FPGA features which can be described using 
 VPR's architectural description facilities.
 
+#现有维护与更新
+VPR系列在学术界现在比较热，7.x版本  
+Yosys 属于个人维护  
+repidSmith 是BYU大学出品的， 最新的版本是 0.5.2 更新到2013.08.27
+
+#利用和开发难度
+三个项目分别以C，C++，Java开发，开发的难度不同，适用性不同，应选择合适的软件应用到自己的Project。
+
 #附件
-[Yosys文档](/assets/yosys.txt)
-[VTR](/vtr.txt)
+[Yosys ReadME](/assets/yosys.txt)
+
+[VTR ReadME](/vtr.txt)
+
 [repaidSmith](assets/repidsmith.pdf)
 
