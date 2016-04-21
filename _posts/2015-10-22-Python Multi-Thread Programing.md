@@ -77,8 +77,8 @@ tags:
 
 </code></pre>
 
-##可调用的类
+## 可调用的类
 重载了特殊方法 __call__的类，该类的对象可以作为Thread初始化时所对应的target实参。
 
-##参考网址  
+## 参考网址  
 [菜鸟教程](http://www.runoob.com/python/python-multithreading.html)
