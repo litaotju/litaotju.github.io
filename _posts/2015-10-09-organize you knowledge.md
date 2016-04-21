@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Oraganize you knoeledge"
+title: "Oraganize you knowledge"
 description: ""
 category: 
-tags: [Prose]
+tags: [学习心得]
 ---
 {% include JB/setup %}
 
