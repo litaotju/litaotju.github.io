@@ -80,11 +80,11 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 
 
 # Friends
-friends: [
-    {
-        title: "博客看累了?轻松一下",
-        href: "https://nlproxy-taolee.rhcloud.com/"
-    }
+# friends: [
+#     {
+#         title: "博客看累了?轻松一下",
+#         href: "https://nlproxy-taolee.rhcloud.com/"
+#     }
     # ,{
     #     title: "Foo",
     #     href: "#"
@@ -98,4 +98,4 @@ friends: [
     #     title: "It helps SEO",
     #     href: "#"
     # }
-]
+# ]

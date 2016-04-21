@@ -9,30 +9,37 @@ tags:
 
 ## 关于屏幕方向
 一定要写在 
-<activity>标签里面啊。。。整死爹了。
-不要写在  <application>标签
-不要写在  <application>标签！
-不要写在  <application>标签！！
-不要写在  <application>标签！！！
-不要写在  <application>标签！！！！
+< activity >标签里面啊。。。
+
+不要写在  < application >标签里面
+
+不要写在  < application >标签里面！
+
+不要写在  < application >标签里面！！
+
+不要写在  < application >标签里面！！！
+
+不要写在  < application >标签里面！！！！
 
 
 就像这样
 
-
- <activity
-            android:name=".CameraActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape" 
-            android:configChanges="keyboardHidden|orientation">
+ <code>
+    < activity <br>
+            android:name=".CameraActivity"  <br>
+            android:label="@string/app_name"  <br>
+            android:screenOrientation="landscape" <br>
+            android:configChanges="keyboardHidden|orientation"      ><br>
+ </code>
 			
-千万不要写成这样
+千万不要写成这样  
 
-
-    <application
-        android:allowBackup="false"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
-		android:screenOrientation="landscape" 
-		android:configChanges="keyboardHidden|orientation"		>
+<code>    
+    < application <br> 
+        android:allowBackup="false"<br>
+        android:icon="@drawable/ic_launcher"<br>
+        android:label="@string/app_name"  <br>
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"<br>
+		android:screenOrientation="landscape"   <br>
+		android:configChanges="keyboardHidden|orientation"		><br>
+</code>
