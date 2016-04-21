@@ -7,17 +7,17 @@ tags:
 ---
 {% include JB/setup %}
 
-#EDA工具的开发是一个有挑战性的工作
+# EDA工具的开发是一个有挑战性的工作
 数字设计越来越需要团队的合作和先进的EDA工具，然而EDA工具的开发是一个有挑战的工作。学术界对于EDA的前沿研究与商业工具不同
 学术上需要有前瞻性，点子要新，方法要好。不需要追求产品的实用和可靠，也不追求软件的易用性。
 
-#现有的数字电路开源工具
+# 现有的数字电路开源工具
 
 * [VTR](http://code.google.com/p/vtr-verilog-to-routing)
 * [Yosys](http://www.clifford.at/yosys/)
 * [rapidSmith](http://sourceforge.net/projects/rapidsmith/files/)
 
-#VTR框架
+# VTR框架
 VTR(Verilog-to-Routing)是一个用于 FPGA架构设计和新型布局布线算法研究的框架，其中包含 ODIN II, ABC, VPR三个工具。
 
 VTR Readme文件中的介绍：
@@ -64,7 +64,7 @@ ABC 是 伯克利大学开发的一款综合工具。
 VPR 是一款FPGA布局布线工具。
 
 
-#Yosys
+# Yosys
 Yosys使用C++语言开发。Yosys Open SYnthesis Suite
 
 This is a framework for RTL synthesis tools. It currently has
@@ -76,17 +76,17 @@ the existing passes (algorithms) using synthesis scripts and
 adding additional passes as needed by extending the yosys C++
 code base.
 
-#rapidSmith
+# rapidSmith
 Designed by Brigham Young University
 
 Keywords: Java, Xilinx FPGA，基于 xdl语言的 FPGA CAD工具。
 
-###Introduction 
+### Introduction 
 RapidSmith is a research-based FPGA CAD tool written in Java for modern Xilinx
 FPGAs. Based on XDL, its objective is to serve as a rapid prototyping platform
 for research ideas and algorithms relating to low level FPGA CAD tools.
 
-###How is This Different than VPR?
+### How is This Different than VPR?
 VPR (Versatile Place and Route) has been an FPGA research tool for several years and has led to hundreds of 
 publications on new FPGA CAD research. It has been a significant contribution to the FPGA research 
 community and has grown to be a complete FPGA CAD flow for research-based FPGAs.
@@ -95,15 +95,15 @@ commercial Xilinx FPGAs. All features of these FPGAs which are accessible via XD
 RapidSmith.  Our understanding is that VPR currently is limited to FPGA features which can be described using 
 VPR's architectural description facilities.
 
-#现有维护与更新
+# 现有维护与更新
 VPR系列在学术界现在比较热，7.x版本  
 Yosys 属于个人维护  
 repidSmith 是BYU大学出品的， 最新的版本是 0.5.2 更新到2013.08.27
 
-#利用和开发难度
+# 利用和开发难度
 三个项目分别以C，C++，Java开发，开发的难度不同，适用性不同，应选择合适的软件应用到自己的Project。
 
-#附件
+# 附件
 [Yosys ReadME](/assets/yosys.txt)
 
 [VTR ReadME](/vtr.txt)
