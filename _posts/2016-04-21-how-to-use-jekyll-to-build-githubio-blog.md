@@ -42,7 +42,7 @@ jekyll是一个ruby的gem包，所以你首先要做的是安装ruby和gem。请
 可以看到已经新增加了一个博文。
 
 
-##在github上新建自己的仓库
+## 在github上新建自己的仓库
 假如你的github的名字为"username",则在你自己的github上新建一个名为
 
     username.github.io
