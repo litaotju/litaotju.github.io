@@ -1,6 +1,6 @@
 # Site settings
-title: Taolee's Blog
-SEOTitle:  涛李的博客 | Taolee's Blog
+title: 李涛的博客
+SEOTitle: 李涛的博客 | Taolee's Blog
 header-img: img/home-bg.jpg
 email: litaotju@live.cn
 description: ""
@@ -80,21 +80,22 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 
 
 # Friends
-# friends: [
-#     {
-#         title: "Hux Blog",
-#         href: "http://huangxuan.me"
-#     },{
-#         title: "Foo",
-#         href: "#"
-#     },{
-#         title: "Bar",
-#         href: "#"
-#     },{
-#         title: "Example Friends",
-#         href: "#"
-#     },{
-#         title: "It helps SEO",
-#         href: "#"
-#     }
-# ]
+friends: [
+    {
+        title: "博客看累了?轻松一下",
+        href: "https://nlproxy-taolee.rhcloud.com/"
+    }
+    # ,{
+    #     title: "Foo",
+    #     href: "#"
+    # },{
+    #     title: "Bar",
+    #     href: "#"
+    # },{
+    #     title: "Example Friends",
+    #     href: "#"
+    # },{
+    #     title: "It helps SEO",
+    #     href: "#"
+    # }
+]
