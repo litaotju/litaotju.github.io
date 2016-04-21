@@ -2,8 +2,9 @@
 layout: post
 title: "静态博客中图片的格式"
 description: ""
-category: 
-tags: [图片]
+category: lessons
+tags: 
+   - 图片
 ---
 {% include JB/setup %}
 >这是一个关于图片插入位置的博文

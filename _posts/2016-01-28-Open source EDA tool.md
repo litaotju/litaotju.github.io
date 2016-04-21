@@ -2,7 +2,7 @@
 layout: post
 title: "Open source EDA tool"
 description: 
-category:  
+category:  杂记
 tags: 
 ---
 {% include JB/setup %}

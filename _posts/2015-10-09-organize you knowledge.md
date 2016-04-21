@@ -2,10 +2,10 @@
 layout: post
 title: "Oraganize you knowledge"
 description: ""
-category: 
-tags: [学习心得]
+category: 杂记
+tags: 
+  - 学习心得
 ---
-{% include JB/setup %}
 
 # 知识体系相比知识本身更加重要  
 研究生期间也敢说一直在努力的读书，但是最后的收获却是寥寥。不论是论文的数量和质量，

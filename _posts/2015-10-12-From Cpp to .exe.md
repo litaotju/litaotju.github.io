@@ -3,7 +3,8 @@ layout: post
 title: "从C++到执行文件"
 description: 
 category:  C++
-tags: 
+tags:
+  - C++
 ---
 {% include JB/setup %}
 
@@ -22,13 +23,16 @@ tags:
 ---
 
 以一个"hello.cc"为例，文件大小为1kb.它的c++代码如下：  
-<pre><code>
-#include "iostream"  (转换成<>)
+{% highlight cpp %}
+
+#include <iostream>
+
 using namespace std;    
 	int main(){    
 	cout<<"Hello World"<<endl;   
-	}  
-</code></pre>
+	} 
+{% endhighlight %}	 
+
 
 进过编译指令'gcc -E hello.cc',输出的"hello.i"文件的大小为**411kb**,经过查看
 ，主要是 using namespace这一句占用了基本上大部分的文件大小。其主要不同是将原来在不同文件中定义的代码
