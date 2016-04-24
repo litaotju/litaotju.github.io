@@ -2,7 +2,7 @@
 layout: post
 title: "Python2 str and unicode err"
 description: 
-category:  
+category:  python
 tags: 
 ---
 {% include JB/setup %}
