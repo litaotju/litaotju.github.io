@@ -59,7 +59,7 @@ ga_domain: litaoju.github.io
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "写写代码，看看产品。世界那么大，哪里是你的？"
+sidebar-about-description: "你和他们一样，你怕自己不重要。"
 sidebar-avatar: /img/avatar-taolee.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
