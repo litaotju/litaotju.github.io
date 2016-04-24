@@ -61,6 +61,14 @@ jekyll是一个ruby的gem包，所以你首先要做的是安装ruby和gem。请
 
 在浏览器中输入：username.github.io就可以访问你推送到git的博客了。
 
+## 已知的问题和Jekyll的约束
+在 _post文件文件夹下新建博客的.md文件时：文件名的形式必须是：
+
+    %Y-%m-%d-Ascii codenames.md
+
+注意，这里的文件可以和文件内部的标题不一致，但是一定要是可以用 ascii字符集标识的字符，
+如果含有中文，在最后生成的博客网站中。**这一页将不能访问**。所以想要生成中文的博客的方法是：**即使title是中文的，文件名仍然需要变成英文。**
+
 ## 参考链接
 >[jekyll介绍](http://jekyll.bootcss.com/)  
 >[git远程操作详解-阮一峰的git教程](http://www.ruanyifeng.com/blog/2014/06/git_remote.html)

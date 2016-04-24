@@ -21,18 +21,25 @@ def mkpost(title, override = False):
 
 def post(title, desc = '', cate = '',  tags = '', override = False):
     "博客头的模板"
-    standard_head = '''---\nlayout: %s\ntitle: "%s"\ndescription: %s\ncategory: %s \ntags: %s\n---\n{%% include JB/setup %%}'''\
-                    % ('post', title, desc, cate, tags)
+    standard_head = ('---',
+                     'layout: post' ,
+                     'title: %s' % title,
+                     'description: %s' % desc,
+                     'category: %s' % cate,
+                     'tags: %s' % tags,
+                     '---',
+                     '{% include JB/setup %}'
+                     )
     filename = mkpost(title, override)
     if filename:
         fobj = codecs.open(filename, 'w','utf8')
         print("Post: %s created successfully" % filename)
-        fobj.write(standard_head)
+        fobj.write(os.linesep.join(standard_head))
         fobj.close()
         return filename
     
 if __name__ == "__main__":
-    opts, args = getopt.getopt(sys.argv[1:], 'h', ['title=','desc=', 'category=', 'tags=', 'override'])
+    opts, args = getopt.getopt(sys.argv[1:], 'hwt:', ['title=','desc=', 'category=', 'tags=', 'override'])
     title = ''
     desc = ''
     category =''
@@ -42,7 +49,7 @@ if __name__ == "__main__":
         if opt =='-h':
             sys.stderr.write("\nUsage: Post.[py] [--title='your title'][--dese='ur '][--category='ur'][--tags='ur'][--override]\n\n")
             sys.exit(0)
-        if opt =='--title':
+        if opt =='--title' or opt=='-t':
             title = value
         if opt =='--desc':
             desc = value
@@ -50,7 +57,7 @@ if __name__ == "__main__":
             category = value
         if opt == '--tags':
             tags = [ tag.strip() for tag in value.strip().split() ]
-        if opt == '--override':
+        if opt == '--override' or opt == '-w':
             override = True
     if title == '':
         sys.exit(0)

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Python2字符串编码大傻逼"
+title: "Python2 str and unicode err"
 description: 
 category:  
 tags: 
