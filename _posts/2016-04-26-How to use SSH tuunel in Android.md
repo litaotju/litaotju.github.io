@@ -63,18 +63,46 @@ Acrooss the GreatWall的目的,请依次完成以下三个步骤:
    * 安装并设置ProxyDroid
    * 在ProxyDroid上设置代理：host为PC的IP地址。 port为在PC的 Putty上设置的 Dynimic Port
    * 启用上面的代理设置。就可以欢快的上Google以及Google Play服务了。
-
+   
 方案1亲测有效。
 
 # 方案2：Server + Android
+
+## 屡试屡败的方案
 本方案比方案1来说，可以省略PC这个中间环节，所以理论上速度应该更高。同时，对于没有Wifi的时候，可以直接采用移动网络自身。
 之所以能省略是因为将PC上的SSH转发工具，移到了Android手机上。方法如下：
 
-1. 在手机上安装 **Serverauditor**SSH客户端。设置 Host，以及 Forward。测试可以直接连接上服务端的ssh
+1. 在手机上安装 **Serverauditor** SSH客户端。设置 Host，以及 Forward。经测试可以直接连接上服务端的ssh。
 2. root你的手机
 3. 在手机上安装 **ProxyDroid**。 设置Host，端口，以及连接方式。
 
-方案2正在测试。
+方案2正在测试。经过测试，本方案无法直接无法上网。为测试是Serverauditor的端口转发还是ProxyDroid全局代理的问题，做了如下测试：
+
+1. 直接使用Serverauditor可以SSH登陆连接OpenShift。
+2. 使用Serverauditor，进行端口转发 设置 0.0.0.0:8899,使用电脑可以共享手机的这个SSH转发功能。说明 Port Fowarding没有问题
+3. 设置Serverauditor端口转发之后，再设置ProxyDroid的代理到 127.0.0.1:8899。无论是全局代理还是应用程序代理，被代理的都无法连接网络。任何网络都无法连接。
+4. 不使用Serverauditor，直接使用ProxyDroid共享电脑的SSH Forwarding, ProxyDroid可以正常使用。
+
+所以症结就在于： ProxyDroid和 Serverauditor，单独使用，都可以完成自己的功能。 ProxyDroid可以设置代理（代理服务器不在本机）， 
+Serverauditor可以进行端口转发(0.0.0.0:8899)，但是ProxyDroid和 Serverauditor却无法配合起来。即无法完成:既拿手机当SSH Forwarding的中转，同时对手机自身的流量进行转发的功能。
+
+## 在此 Almost绝望的时候， Google来了一个教程
+>[Setting Up A Global SSH Proxy on Android with ConnectBot and ProxyDroid](https://pthree.org/2015/08/26/setting-up-a-global-ssh-proxy-on-android-with-connectbot-and-proxydroid/)
+
+这个家伙想干同样的事情，同样使用 ProxyDroid来设置全局代理，不同点就是它的 SSH客户端是 ConnectBot 而不是Serverauditor。抱着试一试的心态
+就下载了 ConnectBot， 按照教程中的方法设置，其实就是前面 Serverauditor设置的翻版， 但是居然成功了。
+这说明以下的问题： 
+
+1. ProxyDroid可以设置本地 SSH Forwarding的端口为代理。 而前面直接用 ProxyDroid设置PC的 Forwarding端口为代理时也可以。说明 ProxyDroid完全没有问题；  
+2. Serverauditor可以进行SSH Forwarding， 也可以将此分享给电脑（设置自己的地址为0.0.0.0）, 但是无法将Forwarding的端口分享给自己。
+
+结论：是Serverauditor的问题。
+所以根据不同需求的最终方案是：   
+
+1. 光手机翻： 纯粹使用手机的话，直接使用ConnectBot 和 ProxyDroid。  
+2. 电脑和手机一起翻：使用PC的SSH客户端，做转接， （1）使用 Putty + ProxyDroid。 （2）或者 Putty + Prioxy + 手机设置Wifi代理  
+3. 光电脑翻：使用Android的SSH客户端为PC做转发， 使用Serverauditor。但是这样做没有意义啊，如果电脑和手机在一个局域网里面，手机可以上网，电脑自然可以，不需要手机做转接。
+如果电脑本身无法上网，手机可以通过移动网络上网，但是这样电脑怎么连接到手机的IP地址？Serverauditor。太麻烦了，即使可以使用，也太费流量，一般没有必要。所以**Serverauditor可以直接扔掉了**。
 
 # Tips
 在ssh登陆到到OpenShift之后，如果长时间没有在终端操作，openshift会自动断开ssh连接。
