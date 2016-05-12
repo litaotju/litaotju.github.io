@@ -7,18 +7,6 @@ import codecs
 import getopt
 import datetime
 
-def mkpost(title, override = False):
-    '给一个title的字符串，生成一个markdown文件表示'
-    #获得当前时间,并转化成正确的格式
-    format_time = datetime.datetime.now().strftime("%Y-%m-%d-")
-    whole_title = format_time + title
-    filename = "_posts\\%s.md" % whole_title 
-    if os.path.exists(filename):
-        print("Warning:Has same blog already")
-        if not override:
-            return None
-    return filename
-
 def post(title, desc = '', cate = '',  tags = '', override = False):
     "博客头的模板"
     standard_head = ('---',
@@ -30,7 +18,17 @@ def post(title, desc = '', cate = '',  tags = '', override = False):
                      '---',
                      '{% include JB/setup %}'
                      )
-    filename = mkpost(title, override)
+    cate = os.path.join("_posts", cate)
+    if not os.path.exists(cate):
+        os.mkdir(cate)
+        
+    format_time = datetime.datetime.now().strftime("%Y-%m-%d-")
+    whole_title = format_time + title + ".md"
+    filename = os.path.join(cate, whole_title)
+    if os.path.exists(filename):
+        print("Warning:Has same blog already")
+        if not override:
+            return None
     if filename:
         fobj = codecs.open(filename, 'w','utf8')
         print("Post: %s created successfully" % filename)
@@ -39,7 +37,7 @@ def post(title, desc = '', cate = '',  tags = '', override = False):
         return filename
     
 if __name__ == "__main__":
-    opts, args = getopt.getopt(sys.argv[1:], 'hwt:', ['title=','desc=', 'category=', 'tags=', 'override'])
+    opts, args = getopt.getopt(sys.argv[1:], 'hwt:c:', ['title=','desc=', 'category=', 'tags=', 'override'])
     title = ''
     desc = ''
     category =''
@@ -53,7 +51,7 @@ if __name__ == "__main__":
             title = value
         if opt =='--desc':
             desc = value
-        if opt =='--category':
+        if opt =='--category' or opt == "-c":
             category = value
         if opt == '--tags':
             tags = [ tag.strip() for tag in value.strip().split() ]
