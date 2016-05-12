@@ -39,12 +39,7 @@ kramdown:
   input: GFM                            # use Github Flavored Markdown !important
 
 # Disqus settings
-disqus_username: taoleetju
-# Duoshuo settings
-#duoshuo_username: huxblog
-# Share component is depend on Comment so we can NOT use share only.
-#duoshuo_share: false                     # set to false if you want to use Comment without Sharing
-
+#disqus_username: taoleetju
 
 # Analytics settings
 # Baidu Analytics
