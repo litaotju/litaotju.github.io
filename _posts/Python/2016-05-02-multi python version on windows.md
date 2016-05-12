@@ -1,6 +1,6 @@
 ---
 layout: post
-title: multi python version on windows
+title: Windows系统下多个Python版本共存的问题
 description: 
 category: python 
 tags: 
@@ -19,7 +19,7 @@ C:\Python27和 C:\Python35。设置windows的步骤如下：
 ## pip和virtual
 将C:\Python35\Script文件夹下的 pip 和virtualenv直接改名为 pip3和 virtualenv3，并不好使，直接改名会报错 "Fatal error in launcher: Unable to create process using “”"。
 参考网址[stackoverflow上的问答](http://stackoverflow.com/questions/24627525/fatal-error-in-launcher-unable-to-create-process-using-c-program-files-x86)
-可以采用 python3 -m pip install 和 python3 -m virtualenv XXXX 来代替直接执行 pip和virutal 不会出错。
+可以采用 ```python3 -m pip install``` 和 ```python3 -m virtualenv XXXX``` 来代替直接执行 pip和virutal 不会出错。
 所以在 C:\Python35\Script 下新建两个python脚本，将 pip3 XXX 转义成 python3 -m pip XXX,  将 virtualenv3 xxx转义成 python -m virtualenv xxx.两个文件的代码如下：
 
 pip3.py
@@ -40,4 +40,4 @@ virtualenv3.py
     obj = subprocess.Popen(cmd)
     obj.wait()
 
-利用 subprocess模块的 Popen对象来执行子进程，同时默认将stdin和stdout等定位在当前是的窗口中。
+两个python脚本都利用了 subprocess模块的 Popen对象来执行子进程，同时默认将stdin和stdout等定位在当前是的窗口中。
