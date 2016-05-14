@@ -97,13 +97,19 @@ layout: default
                 {% endif %}
                 <!-- Short About -->
                 <section class="visible-md visible-lg">
-                    <hr><h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
+                    <hr><h5><a href="https://litaotju.gitbooks.io/resume/content/">About Me</a></h5>
                     <div class="short-about">
-                        {% if site.sidebar-avatar %}
-                            <img src="{{site.sidebar-avatar}}" />
-                        {% endif %}
                         {% if site.sidebar-about-description %}
                             <p>{{site.sidebar-about-description}}</p>
+                        {% endif %}
+                        {% if site.sidebar-contact-email %}
+                            <h5>E-mail: {{site.email}}</h5>
+                        {% endif %}
+                        {% if site.sidebar-resume %}
+                            <h5><a href="{{site.sidebar-resume}}">个人简历链接附上</a></h5>
+                        {% endif %}
+                        {% if site.sidebar-avatar %}
+                            <img src="{{site.sidebar-avatar}}" />
                         {% endif %}
                         <!-- SNS Link -->
                         <ul class="list-inline">
