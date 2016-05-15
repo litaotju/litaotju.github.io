@@ -4,6 +4,9 @@ title: RISC-V 指令集介绍
 description: 
 category: chip
 tags: 
+    - RISC-V
+    - ISA
+    - Open Source
 ---
 {% include JB/setup %}
 ## 什么是RISC-V？
@@ -53,8 +56,9 @@ RSIC-V的设计使得它具有良好的扩展性和定制化。在基本的整�
 ### 异常，陷阱和终端(Exceptions, Traps, and Interrupts)
 首先澄清几个概念，异常是指运行时出现的不正常的条件。陷阱是指在一个RISC-V线程当中出现了异常条件之后处理器的控制权被同步的转移到Supervisor环境中，中断是指由由RISC-V线程之外的事件引发的处理器控制权转移到Supervisor模式。
 
-####参考来源:
+#### 参考来源:
 
->The RISC-V Instruction Set Mannual Volume I: User-Level ISA.(Version 2.0)
->Tech Report USB/EECS-2014-54
+> [The RISC-V Instruction Set Mannual Volume I: User-Level ISA.(Version 2.0)](http://riscv.org/specifications/)   
+> [RISC-V Fundation](http://riscv.org/risc-v-foundation/)  
+> Tech Report USB/EECS-2014-54
 
