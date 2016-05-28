@@ -62,10 +62,114 @@ Linux ELF可执行目标文件的段示意图如下：
 
 
 ## 从应用程序中加载和链接共享库（待续）
+前面介绍了静态链接的概念，静态链接使得应用程序可以方便的使用大量的库函数。但是静态库的两个问题是：  
+1 库函数所提供的代码和数据已经被链接到程序中去，如果要更新或者修复bug，调用相应库函数的应用程序必须进行显式的重新编译链接，很不方便。
+2 如果多个程序共享一个库函数，比如几乎每一个C程序都会使用的printf和scanf，那么这些函数的代码需要被每一个程序拷贝一份，造成了存储器的浪费和低效。
+
+共享库是为了解决上述的两个问题而产生的，共享库是一个目标模块，可以在**运行时加载到存储器当中的任意地址**，并**和一个在存储器中的应用程序链接起来**。
+这个过程就叫做动态链接，是由一个叫做动态连接器的程序来完成的。
+共享库也叫做共享目标（shared object）,因此在unix系统中用 .so后缀的文件存储，windows中大量的运用到了共享库，但是windows中叫做动态链接库（.dll后缀）。
+
+### 动态链接库的生成
+在gcc中可以使用 -fPIC和 -shared选项从源文件生成 动态链接库。
+比如
+
+    gcc -shared -fPIC -o dynamic.so a.c b.c
+    
+上面的指令将源文件a.c和b.c编译并生成可动态链接的共享库 dynamic.so
+
+### 动态链接库的使用
+
+#### 1.加载时动态链接方法 
+指令示例：gcc -o p source.c ./dynamic.so
+
+解释：在生成的程序p中保存一部分关于动态链接库dynamic.so的信息，在加载器加载p到内存中时，也同时加载dynamic.so的代码和数据到内存中。
+
+加载时动态链接的示意图如下：
+![动态链接](/img/in-post/dynamic-link-loadtime.png)
+
+#### 2.运行时动态链接
+运行时动态链接是指，在应用程序中显式的的读取动态链接文件，然后从该文件中析取出特定符号（变量或者函数）;
+
+linux系统为动态连接器提供了接口，允许程序动态的加载和链接共享库，头文件和函数原型如下：
 
 
+        #include "dlfcn.h"
+        void * dlopen(int char *filename, int flag);
+        //若成功则返回指向句柄的指针，若失败则返回NULL
+        
+        void * dlsym(void *handle, char *symbol);
+        //handle是前面使用dlopen返回的共享库的句柄， symbol为想要加载的符号
+        //若成功则返回指向符号的指针，若失败则返回NULL
+        
+        void dlclose(void *handle);
+        //如果没有其他程序使用这个共享库，就卸载这个库
+        
+        const char * dlerror(void);
+        //若前面的调用失败，则为错误消息，否则为NULL
+
+
+### 运行时加载共享库-Example
+
+一个使用动态链接的最简单c语言代码如下，本例子包含dynamic.c和main.c两个源文件，分别产生动态链接文件和可执行程序文件。
+它们的代码和编译指令分别如下：
+
+
+        // dynamic.c
+        //int G = 0;
+        int add(int a, int b){
+            static int G = 0;
+            G++;
+            return G+a+b;
+        }
+
+
+编译指令： gcc dynamic.c -fPIC -shared -o dynamic.so
+    
+
+        // main.c
+        #include "stdlib.h"
+        #include "stdio.h"
+        #include "dlfcn.h"
+
+        int main(){
+            int a, c;
+            scanf("%d %d", &a, &c);
+            //dynamic.so is pwd
+            void *dynamic  = dlopen("dynamic.so", RTLD_LAZY);
+            if(dynamic == NULL){
+            printf("%s", dlerror());
+            return -1;
+            }
+            int (* add)(int, int);
+
+            //there is a funtion in dynamic.so
+            //int add(int a, int c);
+            add = dlsym(dynamic, "add");
+            if(add == NULL){
+                printf("%s", dlerror());
+                exit(-1);
+            }
+            //call add func by dynamic linked symbol
+            printf("%d", add(a,c));
+            
+            //close handle
+            if(dlclose(dynamic) <0){
+                printf("%s", dlerror());
+                exit(-1);
+            }
+            return 0;
+        }
+
+编译选项：
+    gcc -rdynamic main.c -o p -ldl
+    
 ### 相关链接
+>详情请参见 《深入理解计算机系统第七章》
+
 >[从C++到可执行文件](/c++/2015/10/12/From-Cpp-to-.exe/)
 
 
 
+
+    
