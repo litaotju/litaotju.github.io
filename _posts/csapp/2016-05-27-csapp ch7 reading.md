@@ -163,10 +163,42 @@ linux系统为动态连接器提供了接口，允许程序动态的加载和链
 
 编译选项：
     gcc -rdynamic main.c -o p -ldl
+
+### Windows下动态链接库的使用
+
+    #include <iostream>
+    #include "windows.h"
+
+    using namespace std;
+
+    typedef int(* ADD)(int, int);
+
+    int main(int argc, char *argv[]){
+
+        HMODULE dll;
+        LPCSTR dllname = "Dll1.Windows.dll";
+        //加载动态库
+        dll = LoadLibrary(dllname);
+        if (dll == NULL){
+            cerr << "Can not load " << dllname << endl;
+            system("PAUSE");
+            exit(-1);
+        }
+        //从已经加载的库中提取函数
+        ADD add = (ADD)GetProcAddress(dll, "add");
+        if (add == NULL){
+            cerr << "Cannot find add function in " << dllname << endl;
+            system("PAUSE");
+            exit(-1);
+        }
+        //释放动态库
+        FreeLibrary(dll);
+        cout << "1 + 2 = " << add(1, 2) << endl;
+        return 0;
+    }
     
 ### 相关链接
->详情请参见 《深入理解计算机系统第七章》
-
+>详情请参见 《深入理解计算机系统第七章》  
 >[从C++到可执行文件](/c++/2015/10/12/From-Cpp-to-.exe/)
 
 
