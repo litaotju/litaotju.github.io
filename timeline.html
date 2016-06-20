@@ -1,0 +1,14 @@
+---
+layout: page
+title: TimeLine
+description: How did I become like this step by step?
+header-img: "img/tag-bg.jpg"
+---
+
+{% for post in site.posts %}
+<a href="{{ post.url | prepend: site.baseurl }}">
+    <li>
+       {{post.date | date: "%Y, %b"}}-- {{post.title }}
+    </li>
+</a>
+{% endfor %}
