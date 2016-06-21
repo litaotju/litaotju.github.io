@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Django开发中的后台数据库切换
+title: Django 开发之 Model：后台数据库切换配置
 description: 
 category: Python
 tags: 
@@ -30,6 +30,7 @@ Django可以使用 SQLite, MySQL等作为后台的数据库，新建一个projec
 
 - 修改django工程的 setting.py 改成如下
 
+```python
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mysite',  # 数据库名
@@ -38,6 +39,7 @@ Django可以使用 SQLite, MySQL等作为后台的数据库，新建一个projec
         'HOST':'',         # mysql的 host，空则默认为 localhost
         'PORT':'3306',     # mysql监听的端口，一般为3306
     }
+```
 
 - 进行数据库迁移：
     + `manage.py migration` 此命令会在上面新建的 mysite数据库中新建django需要的表。
