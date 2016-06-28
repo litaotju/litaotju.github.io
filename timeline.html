@@ -8,7 +8,7 @@ header-img: "img/tag-bg.jpg"
 {% for post in site.posts %}
 <a href="{{ post.url | prepend: site.baseurl }}">
     <li>
-       {{post.date | date: "%Y, %b"}}-- {{post.title }}
+       {{post.date | date: "%Y, %b %d"}}-- {{post.title }}
     </li>
 </a>
 {% endfor %}
