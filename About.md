@@ -11,7 +11,7 @@ tags:
 一个在费劲的拿到自己微电子系硕士学位的小菜。但是除了本学位的研究工作之外，大部分时间都在读书和[Github](https://github.com/litaotju)上出没。
 除过研究集成电路故障注入仿真系统(略显Boring的题目)之外，本人的阅读兴趣比较杂。
 最近在研究UC Berkeley的[RISC-V](RISC-V Foundation - RISC-V Foundation)指令集和[Chisel](https://chisel.eecs.berkeley.edu/)高级电路设计语言。
-为了找工作也为了自己的兴趣，最近也在啃《CSAPP》和《算法导论》还有《Modern Operating System》。
+为了找工作也为了自己的兴趣，最近也在啃《CSAPP》和《算法导论》还有《Modern Operating System》， 《Effective C++》等。
 除了读书之外，每周打打羽毛球，下雨天睡个十几个小时。
 作为一个科研狗，正经事之外我喜欢看这些电影:《让子弹飞》，《布达佩斯大饭店》，《卡萨布兰卡》，《偷自行车的人》，《喜剧之王》。
 

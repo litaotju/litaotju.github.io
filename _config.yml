@@ -55,8 +55,8 @@ sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "本人正在找工作中，欢迎联系"
 sidebar-avatar: /img/avatar-taolee.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 sidebar-contact-email: true
-sidebar-resume: https://litaotju.gitbooks.io/resume/content/
-
+#sidebar-resume: https://litaotju.gitbooks.io/resume/content/
+sidebar-resume: /assets/resume/litao-Tianjin-University.pdf
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
