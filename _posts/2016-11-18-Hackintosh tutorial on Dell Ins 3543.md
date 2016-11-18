@@ -63,7 +63,8 @@ tags:
 
 - 安装方法参考[RehabMan大神的Github](https://github.com/RehabMan/OS-X-Voodoo-PS2-Controller/wiki/How-to-Install)
 
-修复触摸板触击无效，系统设置中触摸板为空：可正常工作  
+### 修复触摸板触击无效，系统设置中触摸板为空：可正常工作  
+
  - 下载 OSX 10.11的 TrackPad.prefPane 替换 S/L/PreferencePanes/TrackPad.prefPane。
 
  - 参考安装方法： http://bbs.pcbeta.com/forum.php?mod=viewthread&tid=1699479&page=1 
