@@ -41,47 +41,64 @@ tags:
 独立显卡：  
     - 顺利安装了WebDriver-367.15.10.15f03.pkg。
         + 但是安装之后，如果不修改config.plist 则系统显示只是启用了OSX自带驱动。
+
         + 如果按照[网页](https://www.tonymacx86.com/threads/new-method-for-enabling-nvidia-web-drivers-in-clover.202341/)修改config.plist则，
             系统显示 还是只启用了OSX自带驱动，同时，亮度无法调节。
+
         + 所以最后又将config.plist修改为原位，使得可调节亮度。
 
 USB无线网卡：可正常工作。但是重新启动后，有时无法发现USB网卡，需要插拔一下。 
  - 安装TL-WN725N_V2_160128.zip里面的 Package, 不修改任何config.plist. 
+
  - 下载链接：[TP-LINK US](http://www.tp-link.us/download/TL-WN725N_V2.html#Driver) 
 
 PS2键盘与触摸板：可正常工作， 但是触摸板**不能触击只能点击**。  
 - 可正常工作。
+
 - 使用Kext Wizard 安装 RehabMan-Voodoo-2016-0616.zip 中的 VoodooPS2Controller.text。
+
 - 下载链接：[RehabMan Bitbuket](https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads)
+
 - 安装方法参考[RehabMan大神的Github](https://github.com/RehabMan/OS-X-Voodoo-PS2-Controller/wiki/How-to-Install)
 
 修复触摸板触击无效，系统设置中触摸板为空：可正常工作  
  - 下载 OSX 10.11的 TrackPad.prefPane 替换 S/L/PreferencePanes/TrackPad.prefPane。
+
  - 参考安装方法： http://bbs.pcbeta.com/forum.php?mod=viewthread&tid=1699479&page=1 
 
 修复触击必须要开机后打开系统偏好》触摸板》设置，才能正常工作：  
  - 下载Rehabman 的 ioio， 拷贝到/usr/bin
+
  - 写一个脚本使用ioio激活触摸板。（trackpad.sh）
+
  - 设置开机(/Librarys/LaunchDeamon)和登陆自动执行(Automater)该脚本。
 
 背光调节：可正常工作  
  - 使用Kext Wizard安装 RehabMan-IntelBacklight-2016-0506.zip 中的 IntelBacklight.kext。
+
  - 下载链接：[RehabMan Bitbuket](https://bitbucket.org/RehabMan/os-x-intel-backlight/downloads)
+
  - 安装方法参考[RehabMan大神的Github](https://github.com/RehabMan/OS-X-Intel-Backlight)
 
 电池状态：可正常工作  
  - 使用 Kext Wizard 安装RehabMan-Battery-2016-0628.zip中的 ACPIBatteryManager.kext。
+
  - 下载链接：[RehabMan BitBuket](https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads) 
+
  - 安装方法参考[RehabMan大神的Github](https://github.com/RehabMan/OS-X-ACPI-Battery-Driver)
 
 声卡：可正常工作  
  - 删除 S/L/E下的 AppleHDA.kext，使用 Kext Wizard 安装 VoodooHDA.kext (版本289)， Repair Permissions and Rebuild Cache, 重启。
+
  - 下载链接：[Source Forge VoodooHDA](https://sourceforge.net/projects/voodoohda) 
 
 以太网卡：可正常工作  
  - 经过验证发现，按照Windows下的说明，查找的以太网卡号RTL8111b 与mac下DCPIManager识别的型号不同。 所以本来一直视图安装Mieze和Rehabman的提供的RealtekRTL8111.kext完全无法驱动网卡。
+
  - 在Insanelymac论坛上找到 Mieze写的 RealtekRTL8100.kext
+
  - 把Clover/kexts下的， S/L/E和/L/E下 旧的RealtekRTL8111.kext完全删除，Rebuild Cache。
+
  - 使用Kext Wizard安装 RTL8111.kext，重新启动。直接可发现以太网卡。
 
 # 解决的其他问题：
