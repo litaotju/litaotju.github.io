@@ -81,6 +81,8 @@ tags:
 
  - 使用Kext Wizard安装 RehabMan-IntelBacklight-2016-0506.zip 中的 IntelBacklight.kext。
 
+ - 在config.plist中ACPI/DSDT/Fixes 添加“AddPNLF_1000000”项为“True”。 
+
  - 下载链接：[RehabMan Bitbuket](https://bitbucket.org/RehabMan/os-x-intel-backlight/downloads)
 
  - 安装方法参考[RehabMan大神的Github](https://github.com/RehabMan/OS-X-Intel-Backlight)
