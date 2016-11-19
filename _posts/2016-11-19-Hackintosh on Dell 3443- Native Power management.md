@@ -7,6 +7,7 @@ tags:
 ---
 {% include JB/setup %}
 
+## 原生电源管理
 电源管理对于电脑的功耗的动态调节，尤其是笔记本尤其重要。在Dell 3543上安装好各种驱动之后，一直想着可以去激活电源管理。
 为此，进行了如下步骤：
 
@@ -37,3 +38,26 @@ tags:
 3. 按照步骤1的链接Rehabman：guide重新运行 ./ssdtPRGen.sh 脚本， 生成SSDT.aml放到 ／ACPI／pacthed中去。并重启电脑。
 
 4. 验证电源管理安装正确，参考网址：http://osxarena.com/2016/04/guide-how-to-test-powemanagement-hackintosh/
+
+## 修复睡眠功能
+睡眠功能存在的一个问题是，点击Sleep之后，电脑进入了睡眠状态，屏幕变暗硬盘也会关闭。但是在几秒钟之后就会出现风扇开始响起，硬盘也开始供电的状态。
+供电之后，不一会又开始睡眠。➡️开始供电，一直这样循环往复，十分讨厌。
+整个过程，虽然屏幕没有再亮。但是电脑已经从深度睡眠进入到只关闭屏幕的状态。这不是正确的的睡眠。所以，试图找到相关的解决方法。
+
+1. 参考了如下的网址：
+
+    - [Instant wake from sleep "Wake reason: GLAN XDCI" Skylake, El Capitan](https://www.tonymacx86.com/threads/instant-wake-from-sleep-wake-reason-glan-xdci-skylake-el-capitan.198588/)
+
+    - [OSX wakes up immediately after sleeping.](https://www.tonymacx86.com/threads/osx-wakes-up-immediately-after-sleeping.145911/)
+
+    - [Guide: Patching LAPTOP DSDT/SSDTs](https://www.tonymacx86.com/threads/guide-patching-laptop-dsdt-ssdts.152573/)
+
+2. 无效的尝试：
+    - 使用Multibeast在 ／L/E 下安装 GenericUSBXCHI.kext + 给DSDT施加Rehabman大神的 "7-series/8-series USB"补丁
+    
+    - 在无效的尝试失败之后，将DSDT恢复原状，并且删除 ／L／E下的 GenericUSBXCHI.kext 和 ／CLOVER／kexts/10.12/GenericUSBXCHI.kext文件
+
+3. 最终有效方案
+    - 只需要直接给DSDT加"USB _PRW 0x0D (instant wake)"补丁
+
+
