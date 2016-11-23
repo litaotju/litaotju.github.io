@@ -22,7 +22,9 @@ tags:
 
 
 好像由于我自己的Clover设置，使得在 /EFI/Clover/kexts/10.12/ 系统不会加载，
-所以我的安装步骤于原教程，略有不同，安装过程如下：
+所以我的安装步骤于原教程，略有不同。
+
+# 我的安装过程如下：
 
 
 1. cd into S/L/E delete(or add .dackup to disable) IO80211Family.kext and IO80211FamilyV2.kext and corecapture.kext。在这一步中，我没有删除其中的kext文件夹，只是在每一个后面加入了一个 .backup 
@@ -34,11 +36,11 @@ tags:
 4. reboot
 
 
-## 缺点
+# 缺点
 
 1. 好像安装好之后 wifi连接很不稳定，有时候即使连接着wifi也无法上网。（但是USB wifi也这样啊，所以基本无所谓了）。
 
-
+2. 安装完成之后，不知道是哪个新的kext原因，在终端中切换输入法有时候会无效。状态栏显示的英文和中文不对，或者保持中文或英文无法正常切换。
 
 
 
