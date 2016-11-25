@@ -125,3 +125,39 @@ tags:
 
 3. 步骤3. 
     - 把 IOBluetoothFamily.kext放回去。（不影响其他系统功能，其实好像也可以不放）
+
+### 触摸板三个手指手势的问题
+
+安装VoodooPS2Controller.kext之后，发现在Safari之下，三只手指触击可直接在后台新的标签页打开网页。同时，由于Dell 3543带Synaptics在Windows可以识别三个手指的手势，说明在触摸板在硬件上支持3手指手势且已经被Hackintosh识别了三指触击。所以试图实现与Windows10 类似的手势识别方案。
+
+在翻了无数帖子之后，发现VoodooPS2Controller驱动实际上将三个手指的触摸板手势映射为键盘中的组合键。它的定义在
+"/System/Library/Extensions/VoodooPS2Controller.kext/Contents/PlugIns/VoodooPS2Keyboard.kext/Contents/Info.plist"文件中的几个键 “ActionSwipeUp”， "ActionSwipeDown", "ActionSwipeLeft", "ActionSwipeRight"中，具体的定义片段如下:
+
+	<key>ActionSwipeDown</key>
+	<string>3b d, 37 d, 7d d, 7d u, 37 u, 3b u</string>
+	<key>ActionSwipeLeft</key>
+	<string>3b d, 37 d, 7b d, 7b u, 37 u, 3b u</string>
+	<key>ActionSwipeRight</key>
+	<string>3b d, 37 d, 7c d, 7c u, 37 u, 3b u</string>
+	<key>ActionSwipeUp</key>
+	<string>3b d, 37 d, 7e d, 7e u, 37 u, 3b u</string>
+
+注意其中的值 “3b d, 37 d, 7d d, 7d u, 37 u, 3b u”形式表示了分别同时按下编码为 “3b 37 7d”的按键，然后同时松开三个键。所以只需要将“3b 37 7d”的三个按键找到，并在快捷键中设置为想要的行为，就可以实现三个手指的手势识别。
+那么出现在上述的定义中的编码分别表示那个按键。但是着了半天也没看到，因为苹果系统定义的按键编码和其他PC机不知道是否相同。
+
+但是怎么知道某一个手势到底对应那几个按键呢？
+
+答案是，打开 系统偏好设置》键盘》快捷键， 然后随意的双击某一个快捷键的设置，在双击之后，用三个手指上（或者下，左，右）划动触摸板。因为驱动把触摸板手势映射为组合键，所以手势之后必然相当于同时按下了几个键，进而就可以成功的设置手势识别。
+经过实验发现:
+
+	向上划动映射为 "Ctrl + Alt + 上方向键"
+	向下划动映射为 "Ctrl + Alt + 下方向键"
+	向左划动映射为 "Ctrl + Alt + 左方向键"
+	向右划动映射为 "Ctrl + Alt + 右方向键"
+	
+进而，对Mission Control的快捷键部分进行如下的设置，可以实现“向下显示桌面，向左和向右切换桌面，向上打开Mission Control”部分的功能。
+
+![快捷键设置](/assets/pic/trackpad_gesture.png)
+
+
+
