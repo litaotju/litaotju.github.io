@@ -160,4 +160,7 @@ tags:
 ![快捷键设置](/assets/pic/trackpad_gesture.png)
 
 
+### 电脑无法正常关机的问题
 
+在正常使用了一段时间之后，关闭电脑时会出现显示器关闭，但是硬盘灯一直亮的情况，风扇也在响说明电脑无法正常关机。在TonymacX86上搜索时，发现了一个帖子。有人因为安装VirtualBox而出现Hackintosh无法关闭的情况。经过测试，发现确实是VirtualBox的问题。卸载后可以正常关机，安装后无法关机。所以只能和VBox说再见了。
+参考链接：https://www.tonymacx86.com/threads/solved-shutdown-restart-takes-too-long-clover-10-10-5.170933/
