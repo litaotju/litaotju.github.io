@@ -1,6 +1,6 @@
 ---
 layout: post
-title: DW1705\AR9565 Wireless Hackintosh 10.12.1
+title: Hackintosh on Dell 3543- 3.DW1705/AR9565 Wifi
 description: 
 category: 
 tags: 

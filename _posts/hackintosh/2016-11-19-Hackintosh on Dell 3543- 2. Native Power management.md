@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hackintosh on Dell 3443- Native Power management
+title: Hackintosh on Dell 3443- 2. Native Power management
 description: 
 category: 
 tags: 
@@ -41,7 +41,7 @@ tags:
 
 ## 修复睡眠功能
 睡眠功能存在的一个问题是，点击Sleep之后，电脑进入了睡眠状态，屏幕变暗硬盘也会关闭。但是在几秒钟之后就会出现风扇开始响起，硬盘也开始供电的状态。
-供电之后，不一会又开始睡眠。➡️开始供电，一直这样循环往复，十分讨厌。
+供电之后，不一会又开始睡眠，又开始供电，一直这样循环往复，十分讨厌。
 整个过程，虽然屏幕没有再亮。但是电脑已经从深度睡眠进入到只关闭屏幕的状态。这不是正确的的睡眠。所以，试图找到相关的解决方法。
 
 1. 参考了如下的网址：
