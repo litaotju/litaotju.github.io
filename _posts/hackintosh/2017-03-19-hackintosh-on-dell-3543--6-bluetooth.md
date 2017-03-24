@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hackintosh on Dell 3543 - 6. Using Bluetooth after disable Discrete GPU
+title: "Hackintosh on Dell 3543 - 6. Using Bluetooth after disable Discrete GPU"
 description: ""
 category: 
 tags: [Hackintosh]
