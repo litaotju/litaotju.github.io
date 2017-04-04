@@ -26,8 +26,9 @@ tags: [Hackintosh]
     - 步骤3: 使用Kext Wizard安装BTFirmwareUploader.kext，并使用该工具Repair 权限和重建SLE Cache。
 
 问题2: 蓝牙只能保持打开，无法关闭。
-解决方法：暂无
+解决方法：Fn + PrtScr 键可以打开和关闭蓝牙。
 
+同时发现，PrtScr单独按可以关闭和打开触摸板。
 
 3. 参考网址：
     - http://forum.osxlatitude.com/index.php?/topic/2925-bluetooth-firmware-uploader/
