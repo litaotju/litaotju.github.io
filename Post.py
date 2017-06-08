@@ -60,6 +60,3 @@ if __name__ == "__main__":
     if title == '':
         sys.exit(0)
     filename = post(title, desc, category, tags, override)
-    if filename:
-        os.system("code \"%s\"" % filename)
-        sys.exit(0)
