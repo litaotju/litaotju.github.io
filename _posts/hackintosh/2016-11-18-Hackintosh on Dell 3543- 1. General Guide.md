@@ -162,4 +162,8 @@ tags:
 
 ![快捷键设置](/assets/pic/trackpad_gesture.png)
 
+### 换装1080p 屏幕后，启动界面花屏的问题
 
+尝试过修改Clover config，增加customEDID 等方法都无效。 Google的两个 work around，任何一个即可奏效。
+1. 到启动界面后，按Fn+Insert 关闭屏幕后再打开，或者合上盖子后再打开。
+2. 在confid.list的GUI part，设置分辨率为1024\*768. [参考](https://www.tonymacx86.com/threads/screen-distorted-on-boot-hd5500-uefi-native-no-csm-1920x1080-hp-450-g2.172951/page-2)
