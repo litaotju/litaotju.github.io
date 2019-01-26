@@ -10,7 +10,7 @@ tags:
 
 This artical shows how to use tf.data.DataSet apis to do preprecossing for images in DL on [facenet](https://github.com/davidsandberg/facenet.git)
 
-The oringinl facenet implementation using tf.quque.FifoQueue.
+The oringinl facenet implementation using `tensorflow.python.ops.dataflow_ops.FIFOQueue`, which is depracated in new version of tensorflow. So this artical is to replace the orginal `FIFOQueue` based implementation to `tensorflow.data.Dataset` APIs which is recommended by Tensorflow.
 
 ## Create Dataset object from Tensor (filenames/labels)
 Suppose we have a list of file names (in the format of `numpy.ndarray`) need to be used in traning/evulation, and the a list of labels (also in the format of `numpy.array`, and a list of control flags, which is a bit mask to represent serveral preprocss action to an image. 
