@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tensorflow Tuturial 1, Linear regssion
+title: Tensorflow Tutorial 1, Linear regssion
 description: 
 category: machine learning
 tags: tensorflow regression

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tensorflow Tuturial 4, Fix memory leak issue
+title: Tensorflow Tutorial 4, Fix memory leak issue
 description: 
 category: 
 tags: 
