@@ -151,5 +151,7 @@ gRPC is a very popular RPC implementaion, which has many language bindings.
 
 * MPI is more on parallel computing, gRPC is more service/client structure.
 
-# Reference
-> http://mpitutorial.com/tutorials/mpi-introduction/
+# Reference and further reading
+> [http://mpitutorial.com/tutorials/mpi-introduction/](http://mpitutorial.com/tutorials/mpi-introduction/)  
+> [How Can MPI Fit Into Today's Big Computing](https://ljdursi.github.io/EuroMPI2016/#1)  
+> [HPC is dying, and MPI is killing it](https://www.dursi.ca/post/hpc-is-dying-and-mpi-is-killing-it.html)
