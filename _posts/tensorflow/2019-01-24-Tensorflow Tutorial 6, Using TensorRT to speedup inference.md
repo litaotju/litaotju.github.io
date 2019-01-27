@@ -229,7 +229,7 @@ Here the configs and perf number results before/after using TensorRT optimized f
 * Nvidia Driver: 410.78
 * CPU: Intel I5-7500
 * OS: Ubuntu 18.04 with Linux kernel 4.15.0-43
-* TensorRT: 5.0.2.6
+* TensorRT: 4.0.1.6
 * Cuda: 9.0
 * Cudnn: cudnn_version_7_1_4_18_c24081344_m0_e0
 * TensorFlow-GPU: 1.10
