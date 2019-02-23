@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tensorflow Tuturial 3, Visualizing your model and training
+title: Tensorflow Tutorial 3, Visualizing your model and training
 description: 
 category: 
 tags: 

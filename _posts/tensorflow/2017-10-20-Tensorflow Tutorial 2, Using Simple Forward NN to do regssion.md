@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tensorflow Tuturial 2, Using Simple Forward NN to do regssion
+title: Tensorflow Tutorial 2, Using Simple Forward NN to do regssion
 description: 
 category: machine learning
 tags: tensorflow regression
