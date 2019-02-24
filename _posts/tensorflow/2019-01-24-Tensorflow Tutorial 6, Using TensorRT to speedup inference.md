@@ -177,7 +177,7 @@ The complete code is here: https://github.com/litaotju/facenet/tree/tf-trt
 ```
 
 ##  Change evluation fucntion
-```diff
+```bash
 +    always_print = True
  
 -    input_map = {'image_batch': image_batch, 'label_batch': label_batch, 

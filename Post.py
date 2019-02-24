@@ -37,14 +37,14 @@ def post(title, desc = '', cate = '',  tags = '', override = False):
         return filename
     
 if __name__ == "__main__":
-    opts, args = getopt.getopt(sys.argv[1:], 'hwt:c:', ['title=','desc=', 'category=', 'tags=', 'override'])
+    opts, args = getopt.getopt(sys.argv[1:], 'hwt:c:', ['title=','desc=', 'category=', 'tags=', 'override', 'help'])
     title = ''
     desc = ''
     category =''
     tags = ''
     override = False
     for opt, value in opts:
-        if opt =='-h':
+        if opt =='-h' or opt=='--help':
             sys.stderr.write("\nUsage: Post.[py] [--title='your title'][--dese='ur '][--category='ur'][--tags='ur'][--override]\n\n")
             sys.exit(0)
         if opt =='--title' or opt=='-t':

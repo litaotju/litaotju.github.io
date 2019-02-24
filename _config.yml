@@ -52,7 +52,7 @@ disqus_username: taoleesblog
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "本人正在找工作中，欢迎联系"
+sidebar-about-description: "Nothing here"
 sidebar-avatar: /img/avatar-taolee.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 sidebar-contact-email: true
 #sidebar-resume: https://litaotju.gitbooks.io/resume/content/
