@@ -12,6 +12,27 @@ This artical shows how to use tf.data.DataSet apis to do preprecossing for image
 
 The oringinl facenet implementation using `tensorflow.python.ops.dataflow_ops.FIFOQueue`, which is depracated in new version of tensorflow. So this artical is to replace the orginal `FIFOQueue` based implementation to `tensorflow.data.Dataset` APIs which is recommended by Tensorflow.
 
+## A Useful TIPS of using TensorFlow
+
+1. There are two envs to control the log level.
+`TF_CPP_MIN_LOG_LEVEL` and `TF_CPP_MIN_VLOG_LEVEL`, and there usage are defined in `//tensorflow/core/platform/default/logging.cc`. By default, these two envs are considered as 0.
+And they have different usages.
+
+* The `TF_CPP_MIN_LOG_LEVEL` are used to control the `LOG(severity)` macro, where the `severity` can be one of the four constant int `INFO=0`, `WARNING=1`, `ERROR=2`, `FATAL=3`. Only when `severity`  >= `TF_CPP_MIN_LOG_LEVEL` stands, the message of stagement `LOG(severity)` will be output. Summary, ** TF_CPP_MIN_LOG_LEVEL bigger, the less messages are output, 0 has most mesages, 2 has less messeges ** 
+
+* The `TF_CPP_MIN_VLOG_LEVEL` are used to control the `VLOG(lvl)` macro, where the `lvl` can be any integer. Only when `lvl` <= `TF_CPP_MIN_VLOG_LEVEL`, the messages of statement `VLOG(lvl)` will be considered as a `INFO` level log, and then the `TF_CPP_MIN_LOG_LEVEL` controls it. To summary, ** TF_CPP_MIN_VLOG_LEVEL bigger, the more messages are output, 10 has more log than 0.
+
+2. Examples
+
+* Q: How to show the log of `VLOG(3)` statement?  
+    A: TF_CPP_MIN_LOG_LEVEL=0 (or just don't set) and TF_CPP_MIN_VLOG_LEVEL>=3
+        And this will also show all the logs of `LOG` statement, and `VLOG(1)`, `VLOG(2)`, `VLOG(3)`.
+
+* Q: How to only show the log of `WARNING` `ERROR` and `FATAL`, without all `INFO`?   
+    A: TF_CPP_MIN_LOG_LEVEL=1,  and TF_CPP_MIN_VLOF_LEVEL to anything (or just don't set)
+
+* Q: If `INFO` are not printed, all `VLOG` won't be printted out.
+
 ## Create Dataset object from Tensor (filenames/labels)
 Suppose we have a list of file names (in the format of `numpy.ndarray`) need to be used in traning/evulation, and the a list of labels (also in the format of `numpy.array`, and a list of control flags, which is a bit mask to represent serveral preprocss action to an image. 
 
