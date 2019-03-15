@@ -41,7 +41,8 @@ But it doesn't.
 
 ### Issues
 To be more concret, I can observe serveal issues in my system.
-1. `glmark2` and `glxinfo` shows the OpenGL driver is `Vmware` provided, just like what's been done in the virtual machine, which has basiacally very suck visual acceleration.
+
+* `glmark2` and `glxinfo` shows the OpenGL driver is `Vmware` provided, just like what's been done in the virtual machine, which has basiacally very suck visual acceleration.
 ```
 litao@deep: ~ $ glmark2                                                                                                                             
 ** GLX does not support GLX_EXT_swap_control or GLX_MESA_swap_control!
@@ -56,6 +57,7 @@ litao@deep: ~ $ glmark2
 =======================================================
 ...
 ```
+glxinfo show the following
 
 ```
 litao@deep: ~ $ glxinfo | grep OpenGL | grep string                                                                                                                                                 [1:13:48]
@@ -69,14 +71,19 @@ OpenGL ES profile version string: OpenGL ES 3.0 Mesa 18.0.5
 OpenGL ES profile shading language version string: OpenGL ES GLSL ES 3.00
 ```
 
-2. intel_gpu_top shows very GPU activity when I use the chrome to play videos and use any video players
+
+* intel_gpu_top shows very GPU activity when I use the chrome to play videos and use any video players.
+
 `sudo intel_gpu_top`
 <img src ="/assets/pic/intel_gpu_top.low.png" align="center" alt="intel_gpu_top" style="max-width:100%;" />
 
-3. Gnome graphics animation sucks, almost every thing is very slow.
 
-4. nvidia-smi shows there are x-server process running on nvidia gpu, which consumes when precious GPU memory when I want to use them as pure cuda compute device in linux. The out are like the following.
-```
+* Gnome graphics animation sucks, almost every thing is very slow.
+
+
+*  nvidia-smi shows there are x-server process running on nvidia gpu, which consumes when precious GPU memory when I want to use them as pure cuda compute device in linux. The out are like the following.
+
+```bash
 Sat Mar 16 01:12:53 2019       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 410.78       Driver Version: 410.78       CUDA Version: 10.0     |
@@ -103,15 +110,20 @@ Sat Mar 16 01:12:53 2019
 There should be serveral solutions, and they should have the same functionality, while everyone can choose any one of this by their own need.
 
 #### Blacklist nvidia-drm module 
+
  The first solution is what I have achived based on my system, and I don't need to re-install the nvidia-driver.
 Only add the following to `/etc/modprobe.d/blacklist-nvidia.conf`
+
 ```
 blacklist nvidia-drm
 alias nvidia-drm off
 ```
+
 Then optionally (I don't know why it's needed or not, but both works) run the command `update-initramfs`, to re-genetate the initramfs.
 
+
 I guess this would disable the `nvidia-drm` module, which used for the X-display related things, but not leave the other nvidia driver module to be enabled. Because, in last section, we can see that `prime-select intel` commnad also generate a black list to disable all `nvidia` and `nvidia-drm` and `nvidia-modset` module.  To make the cuda program run, we need to keep the `nvidia` and `nvidia-modset` by commenting them out of the blacklist.
+
 
 ``` 
 #blacklist nvidia
@@ -121,6 +133,7 @@ blacklist nvidia-drm
 alias nvidia-drm off
 #alias nvidia-modeset off
 ```
+
 #### Use --no-drm option when install nvidia driver from a runfile.
 
 I didn't test it, but it should works like a charm, since blacklist the module works. 
@@ -133,10 +146,12 @@ litao@deep: ~ $ nvidia-installer -A  | grep drm                       [1:21:06]
       to work around failures to build or install the nvidia-drm kernel module
 ```
 
+
 #### Install the nvidia-headless-XXX driver package provided by apt
 
 I didn't test it, but it should work, the following is that the package said by apt show. And it should have the same functionality as 
 --no-drm option when you use the runfile. Please google it before you try this method.
+
 ```
 litao@deep: ~ $ apt show nvidia-headless-390                                                                                         [1:21:11]
 Package: nvidia-headless-390
@@ -149,6 +164,7 @@ Description: NVIDIA headless metapackage
  Install this package if you do not need X11 or Wayland support, which is
  provided by the nvidia-driver-390 metapackage.
 ```
+
 
 #### Tips need to be considerd when install cuda
 
@@ -191,6 +207,7 @@ OpenGL ES profile shading language version string: OpenGL ES GLSL ES 3.20
 
 2. `nvidia-smi` shows no xserver process and 'no running process' when you don't run any cuda program.
 
+```bash
 litao@deep: ~ $ nvidia-smi                                                                                                                                                                         [23:56:38]
 Fri Mar 15 23:56:50 2019       
 +-----------------------------------------------------------------------------+
@@ -209,12 +226,16 @@ Fri Mar 15 23:56:50 2019
 |=============================================================================|
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
+```
+
 
 3. intel_gpu_top shows the following when you playing an chrome youtube `video`, it should using intel open gl to do haraware accelerate.
 `sudo intel_gpu_top`
 <img src ="/assets/pic/intel_gpu_top.ok.png" align="center" alt="intel_gpu_top" style="max-width:100%;" />
 
+
 4. lsmod to show loaded nvidia and intel mod driver.
+
 
 ```bash
 litao@deep: ~ $ lsmod | grep intel                                                                                                                           [0:26:23]
@@ -240,7 +261,8 @@ snd                    81920  27 snd_hda_codec_generic,snd_seq,snd_seq_device,sn
 ```
 
 Only `nvidia` was loaded, not any `nvidia-drm` thing.
-```
+
+```bash
 itao@deep: ~ $ lsmod | grep nvidia                                                                                                                          [0:26:51]
 nvidia              16588800  0
 ipmi_msghandler        53248  2 ipmi_devintf,nvidia
@@ -260,6 +282,7 @@ NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Ma
 FAIL: 9
 ```
 
+
 ```
 ./deviceQuery Starting...
 
@@ -270,6 +293,7 @@ cudaGetDeviceCount returned 38
 Result = FAIL
 FAIL: 1
 ```
+
 I tried to follow tthe first section which I found useful in old ubuntu (although I don't remember why and how.)
 To add `/usr/lib/x86_64-linux-gpu` (where the libnvidia-ml.so was, found by locate libnvidia-ml.so), to /etc/ld.so.conf.d/nvidia.conf , and 
 re-run the `sudo ldconfig`. I still got the same error when runing `nvidia-smi`.
@@ -278,6 +302,7 @@ re-run the `sudo ldconfig`. I still got the same error when runing `nvidia-smi`.
 The reason why `prime-select intel` works for OpenGL, and make the nvidia gpu totally lost, is because it just completely disbaled any `nvidia` driver (includeing nouveau and nvidia private driver).
 
 * The command will write the following content to  `/etc/modprobe.d/blacklist-nvidia.conf` file, 
+
 ``` 
 blacklist nvidia
 blacklist nvidia-drm
@@ -286,20 +311,25 @@ alias nvidia off
 alias nvidia-drm off
 alias nvidia-modeset off
 ```
+
 then the commnad will re-generate the initfs by `update-initramfs`.
 
+
 * Addtionally, the command will add the kernel starting command line parameters `nouveau.runpm=0` to `/boot/grub/grub.cfg`, like the following 
+
 ```
 <linux	/boot/vmlinuz-4.15.0-46-generic root=UUID=785c9aa3-fff4-4c78-b4b8-390619ea4184 ro  quiet splash $vt_handoff
 ===
 >linux	/boot/vmlinuz-4.15.0-46-generic root=UUID=785c9aa3-fff4-4c78-b4b8-390619ea4184 ro  quiet splash nouveau.runpm=0 $vt_handoff
 ```
+
 About the meaning, please google it, basically it means to disable the 'nouveau' driver(open source version of nvidia gpu driver). 
 
 * Addtionally, the `prime-select intel` command will install a service to the system, which basically do the following during some phase in the startup stage (I don't remember whem, but that's what it does.). About the meaning of this, please see [Ubuntu HybridGraphics](https://help.ubuntu.com/community/HybridGraphics)
 ```
  echo OFF > /sys/kernel/debug/vgaswitcheroo/switch
 ```
+
 
 ### About the /etc/X11/xorg.conf
 
@@ -375,7 +405,9 @@ Section "Screen"
 EndSection
 ```
 
+
 If you have blacklisted the nvidia-drm module, or just didn't install it. Your xorg.conf should not (alghou, it should work even you have nvidia device on the file?) contain nvidia dvice, and consider it as an intel only. My works are like following.
+
 
 ```
 Section "ServerLayout"
