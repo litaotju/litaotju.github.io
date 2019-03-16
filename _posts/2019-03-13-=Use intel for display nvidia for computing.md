@@ -109,6 +109,7 @@ Sat Mar 16 01:12:53 2019
 
 There should be serveral solutions, and they should have the same functionality, while everyone can choose any one of this by their own need.
 
+### Step 1
 #### Blacklist nvidia-drm module 
 
  The first solution is what I have achived based on my system, and I don't need to re-install the nvidia-driver.
@@ -121,8 +122,7 @@ alias nvidia-drm off
 
 Then optionally (I don't know why it's needed or not, but both works) run the command `update-initramfs`, to re-genetate the initramfs.
 
-
-I guess this would disable the `nvidia-drm` module, which used for the X-display related things, but not leave the other nvidia driver module to be enabled. Because, in last section, we can see that `prime-select intel` commnad also generate a black list to disable all `nvidia` and `nvidia-drm` and `nvidia-modset` module.  To make the cuda program run, we need to keep the `nvidia` and `nvidia-modset` by commenting them out of the blacklist.
+I guess this would disable the `nvidia-drm` module, which used for the X-display related things, but not leave the other nvidia driver module to be enabled. Because, in last section, we can see that `prime-select intel` commnad also generate a black list to disable all `nvidia` and `nvidia-drm` and `nvidia-modset` module.  To make the cuda program run, we need to keep the `nvidia` and `nvidia-modeset` by commenting them out of the blacklist.
 
 
 ``` 
@@ -146,7 +146,6 @@ litao@deep: ~ $ nvidia-installer -A  | grep drm                       [1:21:06]
       to work around failures to build or install the nvidia-drm kernel module
 ```
 
-
 #### Install the nvidia-headless-XXX driver package provided by apt
 
 I didn't test it, but it should work, the following is that the package said by apt show. And it should have the same functionality as 
@@ -164,6 +163,146 @@ Description: NVIDIA headless metapackage
  Install this package if you do not need X11 or Wayland support, which is
  provided by the nvidia-driver-390 metapackage.
 ```
+
+### Step 2,  /etc/X11/xorg.conf
+
+If you have blacklisted the nvidia-drm module, or just didn't install it. 
+Your xorg.conf should not contain nvidia dvice, and consider it as an intel only, like the following one.
+
+```
+Section "ServerLayout"
+    Identifier     "Layout0"
+    Screen         "Screen0"
+    InputDevice    "Keyboard0" "CoreKeyboard"
+    InputDevice    "Mouse0" "CorePointer"
+EndSection
+
+Section "Files"
+EndSection
+
+Section "InputDevice"
+    # generated from default
+    Identifier     "Mouse0"
+    Driver         "mouse"
+    Option         "Protocol" "auto"
+    Option         "Device" "/dev/psaux"
+    Option         "Emulate3Buttons" "no"
+    Option         "ZAxisMapping" "4 5"
+EndSection
+
+Section "InputDevice"
+    # generated from default
+    Identifier     "Keyboard0"
+    Driver         "kbd"
+EndSection
+
+Section "Device"
+    Identifier     "Device0"
+    Driver         "intel"
+    VendorName     "Intel"
+EndSection
+
+Section "Screen"
+    Identifier     "Screen0"
+    Device         "Device0"
+EndSection
+```
+
+If you have already blacklisted the `nvidia-drm` module, but has the `nvidia` on `Device` section of the xorg.conf,
+like the following. Then your blacked list will not have affect. You can see that `nvidia-smi`/`glmark2`/`glxinfo` still shows the info like the first section.
+
+```
+Section "ServerLayout"
+    Identifier     "Layout0"
+    Screen      0  "Screen0"
+    Screen      1  "Screen1"
+    InputDevice    "Keyboard0" "CoreKeyboard"
+    InputDevice    "Mouse0" "CorePointer"
+EndSection
+
+Section "Files"
+EndSection
+
+Section "InputDevice"
+    # generated from default
+    Identifier     "Mouse0"
+    Driver         "mouse"
+    Option         "Protocol" "auto"
+    Option         "Device" "/dev/psaux"
+    Option         "Emulate3Buttons" "no"
+    Option         "ZAxisMapping" "4 5"
+EndSection
+
+Section "InputDevice"
+    # generated from default
+    Identifier     "Keyboard0"
+    Driver         "kbd"
+EndSection
+
+Section "Monitor"
+    Identifier     "Monitor0"
+    VendorName     "Unknown"
+    ModelName      "Unknown"
+    HorizSync       28.0 - 33.0
+    VertRefresh     43.0 - 72.0
+    Option         "DPMS"
+EndSection
+
+Section "Device"
+    Identifier     "Device0"
+    Driver         "intel"
+    VendorName     "Intel"
+EndSection
+
+Section "Screen"
+    Identifier     "Screen0"
+    Device         "Device0"
+    Monitor        "Monitor0"
+    DefaultDepth    24
+    SubSection     "Display"
+        Depth       24
+    EndSubSection
+EndSection
+
+Section "Device"
+    Identifier     "Device1"
+    Driver         "nvidia"
+    VendorName     "NVIDIA Corporation"
+EndSection
+
+Section "Screen"
+    Identifier     "Screen1"
+    Device         "Device1"
+    Monitor        "Monitor0"
+    DefaultDepth    24
+    SubSection     "Display"
+        Depth       24
+    EndSubSection
+EndSection
+```
+
+And also, you can only see the screen output to the moniter connectting to nvidia gpu.
+Alternatively, you could see that `lsmod | grep nvidia` shows the following after you have nvidia in xorg.conf
+
+```
+nvidia_modeset       1040384  2
+nvidia              16588800  125 nvidia_modeset
+ipmi_msghandler        53248  2 ipmi_devintf,nvidia
+```
+If you addtionally blacklist the `nvidia_modeset` in the blacklist, and keep `nvidia` in xorg.conf.
+Then you will get a black screen in ubuntu login, and any monitor will not work (both the one connecting to nvidia gpu and the one connecting to motherboard).
+
+
+### To summary.
+You need to blacklist `nvidia-modeset` and `nvidia-drm`, and make a intel-only xorg.conf
+The other alternatives are the following:
+* 1 If you only blacklist the `nvidia-drm`, and use intel-only xorg.conf, that works.
+* 2 If you only blacklist the `nvidia-drm`, and use nvidia-intel xorg.conf, that will not work. (has all the issues listed in #Issues section).
+* 3 If you blacklist both `nvidia-modeset` and `nvidia-drm` and use the nvidia-intel xorg.conf, you will get a black screen. But nvidia-smi can work, no xorg process on gpu, cuda will also work.
+* 4 If you don't blacklist any nvidia (`nvidia` `nvidia-drm` `nvidia-modeset`), and use intel-only xorg.conf, you will get a black screen. But nvidia-smi can work, no xorg process on gpu, and cuda will also work.
+* 5 If you don't blacklist any nvidia (`nvidia` `nvidia-drm` `nvidia-modeset`), and use nvidia-intel xorg.conf, this is exactly same as option 2), use both nvidia for xorg and computing, opengl will not work, intel iGPU will not work.
+* 6.If you blacklist wll nvidia (`nvidia`, `nvidia-drm` `nvidia-modeset`), the cuda will never work since no driver can be found.
+
 
 
 #### Tips need to be considerd when install cuda
@@ -330,123 +469,6 @@ About the meaning, please google it, basically it means to disable the 'nouveau'
  echo OFF > /sys/kernel/debug/vgaswitcheroo/switch
 ```
 
-
-### About the /etc/X11/xorg.conf
-
-If you install nvidia driver, and not blacked (suppose you didn't exclude them during any install method), you will need nvidia device defined in the xorg.conf. Then you could properly use the display connect to nvidia gpu. Here is the mine.
-
-```
-Section "ServerLayout"
-    Identifier     "Layout0"
-    Screen      0  "Screen0"
-    Screen      1  "Screen1"
-    InputDevice    "Keyboard0" "CoreKeyboard"
-    InputDevice    "Mouse0" "CorePointer"
-EndSection
-
-Section "Files"
-EndSection
-
-Section "InputDevice"
-    # generated from default
-    Identifier     "Mouse0"
-    Driver         "mouse"
-    Option         "Protocol" "auto"
-    Option         "Device" "/dev/psaux"
-    Option         "Emulate3Buttons" "no"
-    Option         "ZAxisMapping" "4 5"
-EndSection
-
-Section "InputDevice"
-    # generated from default
-    Identifier     "Keyboard0"
-    Driver         "kbd"
-EndSection
-
-Section "Monitor"
-    Identifier     "Monitor0"
-    VendorName     "Unknown"
-    ModelName      "Unknown"
-    HorizSync       28.0 - 33.0
-    VertRefresh     43.0 - 72.0
-    Option         "DPMS"
-EndSection
-
-Section "Device"
-    Identifier     "Device0"
-    Driver         "intel"
-    VendorName     "Intel"
-EndSection
-
-Section "Screen"
-    Identifier     "Screen0"
-    Device         "Device0"
-    Monitor        "Monitor0"
-    DefaultDepth    24
-    SubSection     "Display"
-        Depth       24
-    EndSubSection
-EndSection
-
-Section "Device"
-    Identifier     "Device1"
-    Driver         "nvidia"
-    VendorName     "NVIDIA Corporation"
-EndSection
-
-Section "Screen"
-    Identifier     "Screen1"
-    Device         "Device1"
-    Monitor        "Monitor0"
-    DefaultDepth    24
-    SubSection     "Display"
-        Depth       24
-    EndSubSection
-EndSection
-```
-
-
-If you have blacklisted the nvidia-drm module, or just didn't install it. Your xorg.conf should not (alghou, it should work even you have nvidia device on the file?) contain nvidia dvice, and consider it as an intel only. My works are like following.
-
-
-```
-Section "ServerLayout"
-    Identifier     "Layout0"
-    Screen         "Screen0"
-    InputDevice    "Keyboard0" "CoreKeyboard"
-    InputDevice    "Mouse0" "CorePointer"
-EndSection
-
-Section "Files"
-EndSection
-
-Section "InputDevice"
-    # generated from default
-    Identifier     "Mouse0"
-    Driver         "mouse"
-    Option         "Protocol" "auto"
-    Option         "Device" "/dev/psaux"
-    Option         "Emulate3Buttons" "no"
-    Option         "ZAxisMapping" "4 5"
-EndSection
-
-Section "InputDevice"
-    # generated from default
-    Identifier     "Keyboard0"
-    Driver         "kbd"
-EndSection
-
-Section "Device"
-    Identifier     "Device0"
-    Driver         "intel"
-    VendorName     "Intel"
-EndSection
-
-Section "Screen"
-    Identifier     "Screen0"
-    Device         "Device0"
-EndSection
-```
 
 
 # Ref:
