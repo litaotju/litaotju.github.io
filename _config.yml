@@ -82,4 +82,4 @@ featured-condition-size: 1              # A tag will be featured if the size of 
     # }
 # ]
 
-theme: jekyll-theme-slate
+#theme: jekyll-theme-slate
