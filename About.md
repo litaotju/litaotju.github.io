@@ -7,23 +7,5 @@ tags:
 ---
 {% include JB/setup %}
 
-## 我是谁
-一个在费劲的拿到自己微电子系硕士学位的小菜。但是除了本学位的研究工作之外，大部分时间都在读书和[Github](https://github.com/litaotju)上出没。
-除过研究集成电路故障注入仿真系统(略显Boring的题目)之外，本人的阅读兴趣比较杂。
-最近在研究UC Berkeley的[RISC-V](RISC-V Foundation - RISC-V Foundation)指令集和[Chisel](https://chisel.eecs.berkeley.edu/)高级电路设计语言。
-为了找工作也为了自己的兴趣，最近也在啃《CSAPP》和《算法导论》还有《Modern Operating System》， 《Effective C++》等。
-除了读书之外，每周打打羽毛球，下雨天睡个十几个小时。
-作为一个科研狗，正经事之外我喜欢看这些电影:《让子弹飞》，《布达佩斯大饭店》，《卡萨布兰卡》，《偷自行车的人》，《喜剧之王》。
-
-## 为什么要开这个站点
-一是为了记录自己的阅读体验，记录既能防止之后自己忘掉同时在写的过程中也能加深自己的理解。 
-二是把写和总结东西当作一种和外界也是和自己对话的过程，给科研生活添加那么一小点乐趣。     
-三也是最不重要的一点，将这些信息共享出来，万一对有的人有用呢。
-
-## 还有呢
-1. 我写Python，科研上用的语言。为什么？语法简洁，写起来快啊，可以快速的和验证你的主意。
-2. 关注集成电路产业和EDA。看一看Yosys， Iscus Verilog, VTR, rapidSmith EDA工具的源代码实现。
-3. 看CSAPP里面一句话叫做，如果你不掌握一件事的细节，实际上你根本没有掌握这件事。
-    所以遇到不懂的东西，我就会想掌握它的细节。有时候可能为了自己喜欢的一件事一个话题，几天不干正事（逃，不要被老板看到）。
-4. 当然是刷 Lintcode， ACM Coder和牛客网（再不去写代码就失业了）。
-5. 什么？你想知道我长啥样？ 看右边就好啦 ------>
+I love movies, coding, thinking and history.  Working on deep learning framework development.
+Reach me by mail: bGl0YW90anVAbGl2ZS5jbg==
