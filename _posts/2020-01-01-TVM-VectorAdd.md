@@ -2,8 +2,8 @@
 layout: post
 title: TVM-VectorAdd
 description: 
-category: 
-tags: 
+category: TVM
+tags: TVM AI Compiler DL Introduction
 ---
 {% include JB/setup %}# TVM VectorAdd - Hello World of TVM
 
@@ -247,7 +247,9 @@ The core api called by the `tvm.build` are
 ### 5.1 tvm.lower
 
 Lower is transforming from the schedule node to lowering IRs, and performing optimiations.
+
 ```python
+
 def lower(sch,
           args,
           name="default_function",
@@ -291,6 +293,7 @@ def lower(sch,
     lower_phase3 = [x[1] for x in add_lower_pass if x[0] > 2]
 
     # Phase 0
+
     if isinstance(sch, schedule.Schedule):
         stmt = form_body(sch)
 
@@ -300,14 +303,16 @@ def lower(sch,
     compact = ir_pass.VerifyCompactBuffer(stmt)
     binds, arg_list = get_binds(args, compact, binds)
 
-    # Phase 1
+    # Phase 1  
+
     stmt = ir_pass.RewriteForTensorCore(stmt, sch, binds)
     stmt = ir_pass.StorageFlatten(stmt, binds, 64, cfg.instrument_bound_checkers)
     stmt = ir_pass.CanonicalSimplify(stmt)
     for f in lower_phase1:
         stmt = f(stmt)
 
-    # Phase 2
+    # Phase 2  
+
     if not simple_mode:
         stmt = ir_pass.LoopPartition(stmt, cfg.partition_const_loop)
     if cfg.disable_vectorize:
@@ -327,13 +332,16 @@ def lower(sch,
         stmt = f(stmt)
 
     # Phase 3
+
     stmt = ir_pass.Simplify(stmt)
     stmt = ir_pass.RemoveNoOp(stmt)
     if not cfg.disable_select_rewriting:
         stmt = ir_pass.RewriteUnsafeSelect(stmt)
     for f in lower_phase3:
         stmt = f(stmt)
+
     # Instrument BoundCheckers
+
     if cfg.instrument_bound_checkers:
         stmt = ir_pass.InstrumentBoundCheckers(stmt)
     if simple_mode:
@@ -386,3 +394,7 @@ If there is no registered function using this name, just use the `nvrtc` c++ API
 - [P1] Why the Api function defined or registered by `TVM_REGISTER_API` can be automatically exported to `_api_internal.py`?
 - [P1] How the python lambda function converted into a c++ function can be called by tvm ?
 - [P0] What's the exact meanting and motivation for each IR pass in `tvm.lower`?
+
+## Reference
+- [https://docs.tvm.ai/dev/codebase_walkthrough.html#vector-add-example](https://docs.tvm.ai/dev/codebase_walkthrough.html#vector-add-example)
+- [https://docs.tvm.ai/dev/runtime.html](https://docs.tvm.ai/dev/runtime.html)
