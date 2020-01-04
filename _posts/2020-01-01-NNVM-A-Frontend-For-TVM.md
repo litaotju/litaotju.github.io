@@ -2,8 +2,8 @@
 layout: post
 title: NNVM-A-Frontend-For-TVM
 description: 
-category: 
-tags: 
+category:  AI
+tags: TVM NNVM
 ---
 {% include JB/setup %}
 

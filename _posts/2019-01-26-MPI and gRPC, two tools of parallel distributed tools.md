@@ -2,7 +2,7 @@
 layout: post
 title: MPI and gRPC, two tools of parallel distributed tools
 description: 
-category: 
+category: Software 
 tags: 
 ---
 {% include JB/setup %}

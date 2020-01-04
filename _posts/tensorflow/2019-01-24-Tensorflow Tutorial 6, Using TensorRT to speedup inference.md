@@ -2,7 +2,7 @@
 layout: post
 title: Tensorflow Tutorial 6, Using TensorRT to speedup inference
 description: 
-category: 
+category: AI
 tags: 
 ---
 {% include JB/setup %}

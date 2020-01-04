@@ -2,8 +2,8 @@
 layout: post
 title: Tensorflow Tutorial 3, Visualizing your model and training
 description: 
-category: 
-tags: 
+category: AI
+tags: tensorflow
 ---
 {% include JB/setup %}
 

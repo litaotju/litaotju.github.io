@@ -2,7 +2,7 @@
 layout: post
 title: "Oraganize you knowledge"
 description: ""
-category: 杂记
+category: 
 tags: 
   - 学习心得
 ---

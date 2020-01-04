@@ -2,7 +2,7 @@
 layout: post
 title: Tensorflow Tutorial 1, Linear regssion
 description: 
-category: machine learning
+category: AI
 tags: tensorflow regression
 ---
 {% include JB/setup %}

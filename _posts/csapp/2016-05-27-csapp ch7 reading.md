@@ -2,7 +2,7 @@
 layout: post
 title: 深入理解计算机系统-读书笔记(第七章)-链接
 description: 
-category: reading
+category: ComputerArch
 tags: 
     - 链接
 ---

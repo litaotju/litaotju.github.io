@@ -2,7 +2,7 @@
 layout: post
 title: My understanding on C++ traits
 description:  
-category: 
+category: C++ 
 tags: 
 ---
 {% include JB/setup %}

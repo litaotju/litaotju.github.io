@@ -2,7 +2,7 @@
 layout: post
 title: How to extract weights from a frozen tensor flow graph pb file 
 description: ""
-category: tensorflow
+category: AI
 tags: 
   - Code snippets
 ---

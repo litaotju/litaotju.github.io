@@ -2,7 +2,7 @@
 layout: post
 title: Using jupyter notebook as interactive python shell
 description: 
-category: 
+category: python
 tags: 
 ---
 {% include JB/setup %}

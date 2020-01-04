@@ -2,7 +2,7 @@
 layout: post
 title: Memory check and memory error in c++
 description: 
-category: 
+category: C++
 tags: 
 ---
 {% include JB/setup %}

@@ -1,6 +1,6 @@
 ---
 layout: post
-category : lessons
+category : 
 tagline: "Supporting tagline"
 tags : [jekyll]
 ---

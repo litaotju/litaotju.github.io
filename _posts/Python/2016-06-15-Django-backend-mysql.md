@@ -2,7 +2,7 @@
 layout: post
 title: Django 开发之 Model：后台数据库切换配置
 description: 
-category: Python
+category: python
 tags: 
 ---
 {% include JB/setup %}

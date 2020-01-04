@@ -2,7 +2,7 @@
 layout: post
 title: "静态博客中图片的格式"
 description: ""
-category: lessons
+category: 
 tags: 
    - 图片
 ---

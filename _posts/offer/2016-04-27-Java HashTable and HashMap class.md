@@ -2,8 +2,8 @@
 layout: post
 title: HashMap 和HashTable的区别
 description: 
-category: 
-tags: 
+category: Software
+tags: java
 ---
 {% include JB/setup %}
 

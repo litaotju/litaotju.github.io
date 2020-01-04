@@ -2,7 +2,7 @@
 layout: post
 title: RISC-V 指令集介绍
 description: 
-category: chip
+category: ComputerArch
 tags: 
     - RISC-V
     - ISA

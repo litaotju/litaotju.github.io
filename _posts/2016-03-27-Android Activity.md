@@ -2,7 +2,7 @@
 layout: post
 title: "Android Activity"
 description: 
-category:  offer
+category: 
 tags: 
 ---
 {% include JB/setup %}

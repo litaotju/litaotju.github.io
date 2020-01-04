@@ -2,7 +2,7 @@
 layout: post
 title: "OS concept   memory management"
 description: ""
-category: 
+category: ComputerArch
 tags: []
 ---
 {% include JB/setup %}

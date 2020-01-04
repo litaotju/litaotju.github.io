@@ -2,7 +2,7 @@
 layout: post
 title: Tensorflow Tutorial 2, Using Simple Forward NN to do regssion
 description: 
-category: machine learning
+category: AI
 tags: tensorflow regression
 ---
 {% include JB/setup %}

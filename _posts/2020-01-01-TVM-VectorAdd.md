@@ -2,7 +2,7 @@
 layout: post
 title: TVM-VectorAdd
 description: 
-category: TVM
+category: AI
 tags: TVM AI Compiler DL Introduction
 ---
 {% include JB/setup %}# TVM VectorAdd - Hello World of TVM

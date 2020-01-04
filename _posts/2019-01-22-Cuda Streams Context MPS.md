@@ -2,8 +2,8 @@
 layout: post
 title: Cuda Streams Context MPS
 description: 
-category: 
-tags: 
+category: AI
+tags: CUDA Parallel-Compute
 ---
 {% include JB/setup %}
 

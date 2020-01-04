@@ -2,7 +2,7 @@
 layout: post
 title: Why-we-need-D_GLIBCXX_USE_CXX11_ABI=0
 description: 
-category: 
+category: C++ 
 tags: 
 ---
 {% include JB/setup %}

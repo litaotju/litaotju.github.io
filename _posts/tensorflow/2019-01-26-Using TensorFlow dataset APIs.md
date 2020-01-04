@@ -2,7 +2,7 @@
 layout: post
 title: Tensorflow Tutorial 5, Using TensorFlow dataset APIs
 description: 
-category: 
+category: AI
 tags: 
 ---
 {% include JB/setup %}

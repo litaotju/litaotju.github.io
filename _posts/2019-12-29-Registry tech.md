@@ -2,7 +2,7 @@
 layout: post
 title: Registry tech
 description: 
-category: 
+category: Design Pattern 
 tags: 
 ---
 {% include JB/setup %}

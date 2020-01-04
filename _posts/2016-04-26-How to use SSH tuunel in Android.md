@@ -2,7 +2,7 @@
 layout: post
 title: How to use SSH tuunel in Android
 description: 
-category: lessons
+category: 
 tags: 
     - 自由
     - GreateWall

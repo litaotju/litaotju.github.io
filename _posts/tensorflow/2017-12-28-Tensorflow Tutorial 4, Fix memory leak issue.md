@@ -2,7 +2,7 @@
 layout: post
 title: Tensorflow Tutorial 4, Fix memory leak issue
 description: 
-category: 
+category: AI
 tags: 
 ---
 {% include JB/setup %}

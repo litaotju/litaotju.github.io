@@ -2,7 +2,7 @@
 layout: post
 title: 深入理解计算机系统-第十二章-并发编程
 description: 
-category: csapp
+category: ComputerArch
 tags: 
 ---
 {% include JB/setup %}

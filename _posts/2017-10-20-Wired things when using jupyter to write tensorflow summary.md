@@ -2,7 +2,7 @@
 layout: post
 title: Wired things when using jupyter to write tensorflow summary
 description: 
-category: 
+category: python 
 tags: 
 ---
 {% include JB/setup %}

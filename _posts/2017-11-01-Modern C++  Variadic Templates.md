@@ -2,7 +2,7 @@
 layout: post
 title: Modern C++ -- Variadic Templates
 description: 
-category: 
+category: C++
 tags: 
 ---
 {% include JB/setup %}

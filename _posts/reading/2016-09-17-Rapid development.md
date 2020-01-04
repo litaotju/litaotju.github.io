@@ -2,7 +2,7 @@
 layout: post
 title: "Rapid Development"
 description: ""
-category: 
+category: Design Pattern 
 tags: []
 ---
 {% include JB/setup %}

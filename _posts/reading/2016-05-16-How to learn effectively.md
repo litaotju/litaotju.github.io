@@ -2,7 +2,7 @@
 layout: post
 title: 提高学习改进记忆的科学方法-转载
 description:
-category: reading
+category: ComputerArch
 tags:
     - 有效学习
     - 持续学习

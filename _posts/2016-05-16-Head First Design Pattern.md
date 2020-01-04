@@ -2,7 +2,7 @@
 layout: post
 title: Head First Design Pattern - 观察者模式
 description: 
-category: reading
+category: Design Pattern
 tags: 
     - Design Pattern
     - 观察者模式

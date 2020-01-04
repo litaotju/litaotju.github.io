@@ -2,7 +2,7 @@
 layout: post
 title: 持续学习
 description:
-category: 读书
+category: ComputerArch
 tags:
     - 全栈
     - 持续学习
