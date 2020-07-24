@@ -2,7 +2,7 @@
 layout: post
 title: Flask 开发之 session
 description: 
-category: flask
+category: Web Dev
 tags: 
 ---
 {% include JB/setup %}
