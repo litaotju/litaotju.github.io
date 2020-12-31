@@ -2,7 +2,7 @@
 layout: post
 title: Flask开发之Flask-Login 用户登录管理
 description: 
-category: flask
+category: Web Dev
 tags: 
 ---
 {% include JB/setup %}

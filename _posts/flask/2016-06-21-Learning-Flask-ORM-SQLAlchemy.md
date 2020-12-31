@@ -2,7 +2,7 @@
 layout: post
 title: Flask 开发之Model：Flask-SQLAlchemy
 description: 
-category: flask
+category: Web Dev
 tags: 
 ---
 {% include JB/setup %}

@@ -2,7 +2,7 @@
 layout: post
 title: Flask开发之Memcached
 description: 
-category: flask
+category: Web Dev
 tags: 
 ---
 {% include JB/setup %}
