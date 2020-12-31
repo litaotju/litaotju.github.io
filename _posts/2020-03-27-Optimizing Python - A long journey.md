@@ -24,6 +24,16 @@ TODO: what programming we are targeted. What's the workload? and What's the bett
 - time.perf_counter()
 - `%timeit` in ipython and jupyter
 
+#### Hotspot and uarch exploration
+
+```bash
+## This will collect the hw metrics.
+amplxe-cl -c uarch-exploration -- $cmd
+
+## This will collect the hotspot of the program
+amplxe-cl -c hotspots -knob sampling-mode=hw -- $cmd
+```
+
 ### How to find the botteneck?
 
 - Is my program I/O bound, memory bound or compute bound?
@@ -77,8 +87,15 @@ Conclusion: numba jit is that easy to use as committed. `nopython` mode does not
 
 TODO: insert cython link as bg.
 
+- Why the cython extension works ? The numpy `universal` function protocal? 
+
+- Numpy native extension protocal directly ??
+  The code is ugly and cost much more than cython.
+
+TODO: add one example on how the cython works faster than the just numpy.
 Conclusion: cython works for us, since many the numpy `umath` routine can be fused together to enhance the cache locality.
-I am seeing very good results on using cython.
+Fusion works on CPU for memory bound functions. I am seeing very good results on using cython.
+
 
 #### Use Intel Distributed Python
 
@@ -86,6 +103,9 @@ TODO: link. and quick start. Intel python distribute is easy to use in [conda]()
 
 But initial profiling shows not much benefit for our program. 
 TODO: why?
+
+
+#### JPEG decoding.
 
 ### Conclusions
 
