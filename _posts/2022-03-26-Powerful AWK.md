@@ -63,4 +63,4 @@ These actions may be able to be complished by other gnu tools too, but by learni
 # Reference
 
 1. awk oneliners: https://catonmat.net/wp-content/uploads/2008/09/awk1line.txt
-2.
+2. awesome awk: https://github.com/freznicek/awesome-awk
